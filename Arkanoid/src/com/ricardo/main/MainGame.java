@@ -21,6 +21,8 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 	/**
 	 * 
 	 */
+	private Thread thread;
+	private boolean isRunning = true;
 	private static final long serialVersionUID = 1L;
 	private BufferedImage layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
 	static Bola bola;
@@ -29,6 +31,7 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 	static UIScore PlayerScore;
 	static UIMenu novo, continuar;
 	static UISeletor seletor;
+	static public Menu menu;
 
 	public MainGame() {
 		this.setPreferredSize(new Dimension(VarGlobais.getGameWidth() * VarGlobais.getGameEscala(), VarGlobais.getGameHeight() * VarGlobais.getGameEscala()));
@@ -43,6 +46,21 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);
 		geraBlocos();
 	}
+	
+	public synchronized void start(){
+		thread = new Thread(this);
+		isRunning = true;
+		thread.start();
+	}
+	
+	public synchronized void stop(){
+		isRunning = false;
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 
@@ -56,8 +74,6 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 		janela.pack();
 		janela.setLocationRelativeTo(null);
 		janela.setVisible(true);
-
-		new Thread(game).start();
 
 	}
 
