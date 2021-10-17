@@ -26,6 +26,9 @@ public class UIScore {
 		score += scor;
 		updateScor();
 	}
+	public void resetScore() {
+		score = 0;
+	}
 	
 
 	public void render(Graphics g) {				

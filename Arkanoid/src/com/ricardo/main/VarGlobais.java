@@ -1,22 +1,15 @@
 package com.ricardo.main;
 
-public class VarGlobais {
+public class VarGlobais {	
 	
-	public static String getGameState() {
-		return gameState;
-	}
-	public static void setGameState(String gameState) {
-		VarGlobais.gameState = gameState;
-	}
-
 	private static int gameWidth = 220, gameHeight = 300, gameEscala = 2;
 	private static int pxPlayer = gameWidth / 2 - 20, pyPlayer = gameHeight - 15, pxBola = gameWidth / 2, pyBola = gameHeight / 2 + 20;
 	private static int pxGrade = 10, pyGrade = 20;
-	private static String gameState = "MENU";
+	
 	
 	private static int pxUiMenu = gameWidth / 4, pyUiMenu = gameHeight / 2, pxUiScore = gameWidth - 100, pyUiScore = 10, pxUiSeletor = gameWidth / 2 + 70, pyUiSeletor = gameHeight / 2;
 	
-	private static boolean isRunning = false, visibleMenu = false;
+	private static boolean isRunning = false;
 
 	public static int getPxPlayer() {
 		return pxPlayer;
@@ -68,13 +61,13 @@ public class VarGlobais {
 		isRunning = Running;
 	}
 
-	public static boolean isVisibleMenu() {
-		return visibleMenu;
-	}
-
-	public static void setVisibleMenu(boolean visible) {
-		visibleMenu = visible;
-	}
+//	public static boolean isVisibleMenu() {
+//		return visibleMenu;
+//	}
+//
+//	public static void setVisibleMenu(boolean visible) {
+//		visibleMenu = visible;
+//	}
 
 	public static int getGameWidth() {
 		return gameWidth;

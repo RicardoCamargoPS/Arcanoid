@@ -22,7 +22,7 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 	 * 
 	 */
 	private Thread thread;
-	private boolean isRunning = true;
+	private boolean isRunning = true, isPaused = false, isNewGame = false;
 	private static final long serialVersionUID = 1L;
 	private BufferedImage layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
 	static Bola bola;
@@ -30,55 +30,84 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 	public static List<Bloco> blocos = new ArrayList<Bloco>();
 	static UIScore PlayerScore;
 	static UIMenu novo, continuar;
-	static UISeletor seletor;
-	static public Menu menu;
+	static UISeletor seletor;	
+	static List <GameObject> status = new ArrayList<GameObject>();
+	static GameStatus gs;
 
 	public MainGame() {
 		this.setPreferredSize(new Dimension(VarGlobais.getGameWidth() * VarGlobais.getGameEscala(), VarGlobais.getGameHeight() * VarGlobais.getGameEscala()));
-		this.addKeyListener(this);
+		this.addKeyListener(this);			
+		gs = new GameStatus();
 
 		novo = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu(), "Novo Jogo");
-		continuar = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu() + 23, "Continuar");
 		seletor = new UISeletor(VarGlobais.getPxUiSeletor(), VarGlobais.getPyUiSeletor(), "<" );
+		continuar = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu() + 23, "Continuar");
 		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());
 
 		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());
-		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);
+		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);		
 		geraBlocos();
-	}
-	
-	public synchronized void start(){
-		thread = new Thread(this);
-		isRunning = true;
-		thread.start();
-	}
-	
-	public synchronized void stop(){
-		isRunning = false;
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
 
-
+	}
 
 	public static void main(String[] args) {
 
 		MainGame game = new MainGame();
-		JFrame janela = new JFrame("Pong Game");
+		JFrame janela = new JFrame("Arkanoid");
 		janela.setResizable(false);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.add(game);
 		janela.pack();
 		janela.setLocationRelativeTo(null);
-		janela.setVisible(true);
+		janela.setVisible(true);		
+		new Thread(game).start();
+
+	}
+
+	public void start() {
+
+		if(gs.isNewGame) {
+			newGame();						
+		}
+		else if (gs.isPaused() == false) {
+
+			for(int x = 0; x < status.size(); x++) {
+
+				if(status.getClass().equals(player)) {
+					player = (Player) status.get(x);
+				}else if(status.getClass().equals(bola)) {
+					bola = (Bola) status.get(x);
+				}
+				else if(status.getClass().equals(blocos)) {
+					blocos.add((Bloco) status.get(x));
+				}					
+			}
+		}	
+
+	}
+
+	public void paused() {
+
+		gs.setRunning(false);
+
+		status.add(player);
+		status.add(bola);
+		for(int x = 0; x < blocos.size(); x++) {
+
+			status.add(blocos.get(x));
+		}		
+	}
+
+	public void newGame() {		
+
+		PlayerScore.resetScore();		
+		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());
+		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);
+		geraBlocos();
 
 	}
 
 	public void tick() {
-
 		bola.tick();
 		player.tick();
 		testCollision(player, bola);
@@ -104,9 +133,8 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
 
-		if(VarGlobais.isRunning()) {
+		if(gs.isRunning()) {
 
-			VarGlobais.setVisibleMenu(false);
 			bola.render(g);
 			player.render(g);
 			PlayerScore.render(g);
@@ -130,9 +158,17 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 
 
 	@Override
-	public void run() {
+	public void run() {		
 
 		while(true) {
+			if(gs.isNewGame) {				
+				newGame();
+			}else if(gs.isPaused() == true) {
+				paused();
+			}
+			else if( gs.isRunning() ){
+				start();
+			}
 			tick();
 			render();
 			try {
@@ -220,16 +256,18 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {			
+			gs.setRunning(true);
 
-			VarGlobais.setRunning(true);
-			VarGlobais.setVisibleMenu(false);
+			//			VarGlobais.setRunning(true);
+			//			isPaused = false;
 
 		}
-		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {			
+			gs.setRunning(false);
 
-			VarGlobais.setRunning(false);
-			VarGlobais.setVisibleMenu(true);
+			//			VarGlobais.setRunning(false);
+			//			isPaused = true;
 		}		
 
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
@@ -256,10 +294,9 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 	}
 
 
-
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+
 		if(e.getKeyCode() == KeyEvent.VK_D) {
 			player.direita = false ;
 			player.isMuve = false;
