@@ -82,7 +82,7 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 					blocos.add((Bloco) status.get(x));
 				}					
 			}
-		}	
+		}
 
 	}
 
@@ -161,14 +161,20 @@ public class MainGame extends Canvas implements Runnable, KeyListener {
 	public void run() {		
 
 		while(true) {
-			if(gs.isNewGame) {				
-				newGame();
-			}else if(gs.isPaused() == true) {
+
+			if(gs.isRunning()) {				
+				start();
+			}else {
 				paused();
 			}
-			else if( gs.isRunning() ){
-				start();
-			}
+//			if(gs.isNewGame) {				
+//				newGame();
+//			}else if(gs.isPaused() == true) {
+//				paused();
+//			}
+//			else if( gs.isRunning() ){
+//				start();
+//			}
 			tick();
 			render();
 			try {
