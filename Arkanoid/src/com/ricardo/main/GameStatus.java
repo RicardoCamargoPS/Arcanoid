@@ -26,12 +26,12 @@ public class GameStatus {
 	public void setPaused(boolean isPaused) {
 		this.isPaused = isPaused;
 	}
-//	public boolean isNewGame() {
-//		return isNewGame;
-//	}
-//	public void setNewGame(boolean isNewGame) {
-//		this.isNewGame = isNewGame;
-//	}
+	public boolean isNewGame() {
+		return isNewGame;
+	}
+	public void setNewGame(boolean isNewGame) {
+		this.isNewGame = isNewGame;
+	}
 	
 	
 //	

@@ -6,9 +6,13 @@ import com.ricardo.main.VarGlobais;
 
 public class Player extends GameObject {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public boolean direita = false, esquerda = false, isMuve = false;
-	private int dx = 1;
-	private double vel = 0.4;
+	private static int dx = 1;
+	private static double vel = 0.4;
 	
 	public Player(int px, int py) {
 		
