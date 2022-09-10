@@ -6,63 +6,87 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import com.ricardo.entidades.Bloco;
-import com.ricardo.entidades.Bola;
-import com.ricardo.entidades.GameObject;
-import com.ricardo.entidades.Player;
-import com.ricardo.ui.UIMenu;
-import com.ricardo.ui.UIScore;
-import com.ricardo.ui.UISeletor;
+import com.ricardo.entidades.*;
+import com.ricardo.ui.*;
 import com.ricardo.windowns.Display;
 
-public class Game implements Runnable {
+public class Game implements Runnable{
 
 	private Display janela;
 	private Thread thread;
 
-	public static List<Bloco> blocos = new ArrayList<Bloco>();
+	public static List<Bloco> blocos;
 	static UIScore PlayerScore;
 	static UIMenu novo, continuar;
 	static UISeletor seletor;	
-	static List <GameObject> status = new ArrayList<GameObject>();
 
-	private BufferedImage layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
+	private BufferedImage layer;
 	static Bola bola;
 	static Player player;
+	
+	private Controle controle;
 
 	public Game() {
+
+		/**************************NSTANCIA DA JANELA*************************************/
 		janela = new Display("Arkanoid", VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
 
+		/***********************INSTANCIAS DO MENU****************************************/
 		novo = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu(), "Novo Jogo");
 		seletor = new UISeletor(VarGlobais.getPxUiSeletor(), VarGlobais.getPyUiSeletor(), "<" );
 		continuar = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu() + 23, "Continuar");
 		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());
 
+		/**************************INSTANCIA DO PLAYER*************************************/
 		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());
+
+		/**************************INSTANCIA DA BOLA***************************************/
 		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);	
-		geraBlocos();
+
+		/**************************INSTANCIAS DOS BLOCOS**********************************/
+		blocos = new ArrayList<Bloco>();
+
+		/**************************CRIACAO DE  OUTRAS INSTANCIAS*************************************/
+
+		/********CONTROLE******/
+		controle = new Controle();		
+		
+		/********LAYER*********/
+		layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
 
 	}
-
-	private void init() {
-		// TODO Auto-generated method stub
-
+	
+	
+	/******************************FUNCAO RESPONSAVEL PELA LOGICA DOS BLOCOS***********************************/
+	public void blocosTicks() {
+		for(int x = 0; x < blocos.size(); x++) {
+			blocos.get(x).tick();
+			testCollision(blocos.get(x), bola);					
+		}	
+		for(int x = 0; x < blocos.size(); x++) {
+			if(blocos.get(x).def == 0) {
+				blocos.remove(x);		
+				score();
+			}							
+		}
 	}
-
+	
+	/****************************FUNCAO RESPONSAVEL POR INCREMENTAR A PONTUACAO DO JOGADOR***********************/
+	public void score() {		
+		PlayerScore.increaseScore(10);		
+	}
+	
+	/******************************FUNCAO RESPONSAVEL PELA LOGICA DO JOGO***********************************/
 	public void tick() {
 		bola.tick();
 		player.tick();
-		testCollision(player, bola);
-		for(int x = 0; x < blocos.size(); x++) {
-			testCollision(blocos.get(x), bola);
-			if(blocos.get(x).def == 0) {
-				blocos.remove(x);
-				PlayerScore.increaseScore(10);
-			}
-		}	
+		testCollision(player, bola);	
+		blocosTicks();
 	}
 
+	/*****************************FUNCAO RESPONSAVEL PELA RENDERIZACAO DO JOGO**********************************/
 	public void render() {
 
 		BufferStrategy bs = janela.getBufferStrategy();
@@ -80,9 +104,9 @@ public class Game implements Runnable {
 		PlayerScore.render(g);
 
 		for(int x = 0; x < blocos.size(); x++) {
-
 			blocos.get(x).render(g);
 		}
+
 
 		g = bs.getDrawGraphics();
 		g.drawImage(layer, 0, 0, VarGlobais.getGameWidth() * VarGlobais.getGameEscala(), VarGlobais.getGameHeight() * VarGlobais.getGameEscala(), null);
@@ -90,18 +114,21 @@ public class Game implements Runnable {
 		bs.show();
 	}
 
-	public void geraBlocos() {
+	public void geraBlocos() {		
+
 		int px = VarGlobais.getPxGrade(), py = VarGlobais.getPyGrade();
 		for(int x = 1; x <= 9; x++) {
 			for(int y = 0; y <= 5; y++ ) {
+				Random random = new Random();
+				int def = random.nextInt(8) + 1;				
 
-				blocos.add(new Bloco(px, py, 21, 13, 3, Color.blue));
+				blocos.add(new Bloco(px, py, 21, 13, def));
 				py += 14;
 			}
 			px += 22;
 			py = VarGlobais.getPyGrade();
 		}
-	}
+	}	
 
 	boolean isIntersecting(GameObject mA, GameObject mB) {
 		return mA.ladoDir() >= mB.ladoEsq() && mA.ladoEsq() <= mB.ladoDir()
@@ -111,10 +138,6 @@ public class Game implements Runnable {
 	void testCollision(Bloco mBrick, Bola mBall) {
 		if (!isIntersecting(mBrick, mBall))
 			return;
-
-		//
-
-		//scoreboard.increaseScore();
 
 		double overlapLeft = mBall.ladoDir() - mBrick.ladoEsq();
 		double overlapRight = mBrick.ladoDir() - mBall.ladoEsq();
@@ -132,11 +155,7 @@ public class Game implements Runnable {
 		} else {
 			mBall.dy = ballFromTop ? -1 : 1;
 		}
-		mBrick.def--;
-
-		if(mBrick.def == 0) {
-			blocos.remove(this);
-		}
+		mBrick.def--;		
 	}
 
 
@@ -158,9 +177,9 @@ public class Game implements Runnable {
 	}
 
 	@Override
-	public void run() {
-
-		init();
+	public void run() {	
+		
+		geraBlocos();
 
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
@@ -171,11 +190,13 @@ public class Game implements Runnable {
 
 		while (VarGlobais.isRunning()) {
 
+
 			nowTime = System.nanoTime();
 			deltaTime += (nowTime - lastTime) / timePerTick;
 			lastTime = nowTime;
 
 			if(deltaTime >= 1) {
+
 
 				tick();
 				render();	
@@ -208,7 +229,6 @@ public class Game implements Runnable {
 
 
 	}
-
 
 
 

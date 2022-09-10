@@ -10,7 +10,7 @@ public class Player extends GameObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public boolean direita = false, esquerda = false, isMuve = false;
+	private static boolean  isMuve = false;
 	private static int dx = 1;
 	private static double vel = 0.4;
 	
@@ -53,6 +53,10 @@ public class Player extends GameObject {
 
 	public void setVel(double vel) {
 		this.vel = vel;
+	}
+	
+	public void setMuve(boolean muve) {
+		this.isMuve = muve;
 	}
 	
 }
