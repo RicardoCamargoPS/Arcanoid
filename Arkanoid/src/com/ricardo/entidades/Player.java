@@ -10,16 +10,16 @@ public class Player extends GameObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static boolean  isMuve = false;
-	private static int dx = 1;
+	public static boolean  isMoving;
+	private static int dx = 0;
 	private static double vel = 0.4;
 	
 	public Player(int px, int py) {
 		
 		this.px = px;
 		this.py = py;
-		width = 40;
-		height = 12;
+		this.width = 40;
+		this.height = 12;
 		
 	}
 
@@ -32,8 +32,9 @@ public class Player extends GameObject {
 			px = VarGlobais.getGameWidth() - width;
 		}		
 		
-		if(isMuve)
+		if(isMoving) {
 			px +=  dx * vel * 6;
+		}
 		
 	}
 
@@ -55,8 +56,8 @@ public class Player extends GameObject {
 		this.vel = vel;
 	}
 	
-	public void setMuve(boolean muve) {
-		this.isMuve = muve;
+	public void setMoving(boolean moving) {
+		this.isMoving = moving;
 	}
 	
 }

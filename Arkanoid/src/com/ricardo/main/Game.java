@@ -2,6 +2,9 @@ package com.ricardo.main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -26,7 +29,6 @@ public class Game implements Runnable{
 	static Bola bola;
 	static Player player;
 	
-	private Controle controle;
 
 	public Game() {
 
@@ -49,9 +51,6 @@ public class Game implements Runnable{
 		blocos = new ArrayList<Bloco>();
 
 		/**************************CRIACAO DE  OUTRAS INSTANCIAS*************************************/
-
-		/********CONTROLE******/
-		controle = new Controle();		
 		
 		/********LAYER*********/
 		layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
@@ -229,6 +228,9 @@ public class Game implements Runnable{
 
 
 	}
+
+
+	
 
 
 

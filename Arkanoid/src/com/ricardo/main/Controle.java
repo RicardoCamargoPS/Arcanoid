@@ -3,26 +3,16 @@ package com.ricardo.main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Controle implements KeyListener{
-	
-	public Controle() {
-	
-		
-		addKeyListener(this);
-	}
-	
+public class Controle implements KeyListener {
 
-	private void addKeyListener(Controle controle) {
-		// TODO Auto-generated method stub
+	@Override
+	public void keyTyped(KeyEvent e) {		
+		
 		
 	}
 
 
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
+	@Override
 	public void keyPressed(KeyEvent e) {
 		
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {			
@@ -48,29 +38,36 @@ public class Controle implements KeyListener{
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_D) {
-			Game.player.setMuve(true); 
+			
+			System.out.println("apertando a tecla d");
+			Game.player.setMoving(true); 
 			Game.player.setDx(1);
 			
 		}
-
 		if(e.getKeyCode() == KeyEvent.VK_A) {	
-			Game.player.setMuve(true); 		
+			System.out.println("apertando a tecla a");
+			Game.player.setMoving(true); 		
 			Game.player.setDx(-1);
 				 
 		}
+		
 	}
 
+
+	@Override
 	public void keyReleased(KeyEvent e) {
-
-		if(e.getKeyCode() == KeyEvent.VK_D) {
+		
+if(e.getKeyCode() == KeyEvent.VK_D) {
+			Game.player.setMoving(false); 
 			Game.player.setDx(0);
-			Game.player.setMuve(false);
-
-		}else if(e.getKeyCode() == KeyEvent.VK_A) {
-			Game.player.setDx(0);
-			Game.player.setMuve(false); 
-
+			
 		}
+		if(e.getKeyCode() == KeyEvent.VK_A) {
+			Game.player.setMoving(false); 		
+			Game.player.setDx(0);
+				 
+		}	
+		
 	}
 
 }
