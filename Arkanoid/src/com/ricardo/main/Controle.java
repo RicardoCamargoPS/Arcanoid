@@ -37,15 +37,12 @@ public class Controle implements KeyListener {
 			// seletor.setPy(VarGlobais.getGameHeight() / 2 + 24);
 		}
 
-		if(e.getKeyCode() == KeyEvent.VK_D) {
-			
-			System.out.println("apertando a tecla d");
+		if(e.getKeyCode() == KeyEvent.VK_D) {			
 			Game.player.setMoving(true); 
 			Game.player.setDx(1);
 			
 		}
-		if(e.getKeyCode() == KeyEvent.VK_A) {	
-			System.out.println("apertando a tecla a");
+		if(e.getKeyCode() == KeyEvent.VK_A) {			
 			Game.player.setMoving(true); 		
 			Game.player.setDx(-1);
 				 

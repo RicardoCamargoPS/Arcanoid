@@ -2,6 +2,9 @@ package com.ricardo.entidades;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import com.ricardo.main.Game;
+import com.ricardo.main.TesteColisao;
 import com.ricardo.main.VarGlobais;
 
 public class Player extends GameObject {
@@ -13,6 +16,8 @@ public class Player extends GameObject {
 	public static boolean  isMoving;
 	private static int dx = 0;
 	private static double vel = 0.4;
+	private TesteColisao estaColidindo;
+	
 	
 	public Player(int px, int py) {
 		
@@ -21,6 +26,8 @@ public class Player extends GameObject {
 		this.width = 40;
 		this.height = 12;
 		
+		estaColidindo = new TesteColisao();
+				
 	}
 
 	@Override
@@ -36,6 +43,7 @@ public class Player extends GameObject {
 			px +=  dx * vel * 6;
 		}
 		
+		estaColidindo.playerColisao(this, Game.bola);
 	}
 
 	@Override
