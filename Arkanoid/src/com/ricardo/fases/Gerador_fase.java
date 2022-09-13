@@ -63,28 +63,29 @@ public class Gerador_fase {
 			int px = VarGlobais.getPxGrade(), py = VarGlobais.getPyGrade();
 			int def = 1;
 			for(int xx = 0; xx < largura; xx++) {
-				for(int yy = 0; yy < altura; yy++) {						
-					if(map.getRGB(xx, yy) == Game.cores[0].getRGB()) {
-						def = 1;		
+				for(int yy = 0; yy < altura; yy++) {	
 
-					}else if(map.getRGB(xx, yy) == Game.cores[1].getRGB())
-					{
-						def	= 2; 
-					}else if(map.getRGB(xx, yy) == Game.cores[2].getRGB()) {
-						def = 3; 
-					}else if(map.getRGB(xx, yy) ==	Game.cores[3].getRGB()) { 
-						def = 4; 
-					}else if(map.getRGB(xx, yy) == Game.cores[4].getRGB()) { 
-						def = 5; 
-					}else if(map.getRGB(xx, yy) == Game.cores[5].getRGB()) { 
-						def = 6; 
-					}else if(map.getRGB(xx, yy) == Game.cores[6].getRGB()) { 
-						def	= 7; 
-					}else if(map.getRGB(xx, yy) == Game.cores[7].getRGB()) { 
-						def = 8; 
-					} 
-					
 					if(map.getRGB(xx, yy) != 0) {
+						if(map.getRGB(xx, yy) == Game.cores[0].getRGB()) {
+							def = 1;		
+
+						}else if(map.getRGB(xx, yy) == Game.cores[1].getRGB())
+						{
+							def	= 2; 
+						}else if(map.getRGB(xx, yy) == Game.cores[2].getRGB()) {
+							def = 3; 
+						}else if(map.getRGB(xx, yy) ==	Game.cores[3].getRGB()) { 
+							def = 4; 
+						}else if(map.getRGB(xx, yy) == Game.cores[4].getRGB()) { 
+							def = 5; 
+						}else if(map.getRGB(xx, yy) == Game.cores[5].getRGB()) { 
+							def = 6; 
+						}else if(map.getRGB(xx, yy) == Game.cores[6].getRGB()) { 
+							def	= 7; 
+						}else if(map.getRGB(xx, yy) == Game.cores[7].getRGB()) { 
+							def = 8; 
+						} 
+
 						blocos.add(new Bloco(px,py, 21, 13, def, Game.cores[def - 1]));
 						py += 14;						
 					}else {
@@ -94,7 +95,7 @@ public class Gerador_fase {
 				px += 22; 
 				py = VarGlobais.getPyGrade(); }
 
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

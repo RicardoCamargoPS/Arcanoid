@@ -16,25 +16,26 @@ public class Controle implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {			
-			// gs.setRunning(true);
-			// VarGlobais.setRunning(true);
-			// isPaused = false;
+			if(Game.gameStatos == "MENU") {
+				Game.menu.enter = true;
+			}
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {			
-			// gs.setRunning(false);aa
-			// VarGlobais.setRunning(false);
-			// isPaused = true;
+			Game.gameStatos = "MENU";
+			Game.menu.pause = true;
 		}		
 
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			//if(seletor.getPy() > VarGlobais.getGameHeight() / 2) {
-			// seletor.setPy(VarGlobais.getGameHeight() / 2);
+			if(Game.gameStatos == "MENU") {
+				Game.menu.up = true;
+			}
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-			//if(seletor.getPy() == VarGlobais.getGameHeight() / 2) {
-			// seletor.setPy(VarGlobais.getGameHeight() / 2 + 24);
+			if(Game.gameStatos == "MENU") {
+				Game.menu.down = true;
+			}
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_D) {			

@@ -25,13 +25,20 @@ public class Game implements Runnable{
 	private BufferedImage layer;
 	public static Bola bola;
 	static Player player;
-	
+
 	private Gerador_fase fase;
 	public static Color[] cores;
-	
+
+	public static String gameStatos = "MENU";
+	private boolean showMessageGameOver = true;
+	private int framesGameOver = 0;
+	private boolean restartGame = false;
+
+	public static Menu menu;
+
 
 	public Game() {
-		
+
 		cores = new Color[8];
 
 		/**************************NSTANCIA DA JANELA*************************************/
@@ -41,28 +48,38 @@ public class Game implements Runnable{
 		novo = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu(), "Novo Jogo");
 		seletor = new UISeletor(VarGlobais.getPxUiSeletor(), VarGlobais.getPyUiSeletor(), "<" );
 		continuar = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu() + 23, "Continuar");
-		
+
 
 		/**************************INSTANCIA DO PLAYER*************************************/
 		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());
 
 		/**************************INSTANCIA DA BOLA***************************************/
 		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);	
-		
+
 		fase = new Gerador_fase();
 
 		/**************************CRIACAO DE  OUTRAS INSTANCIAS*************************************/
-		
+
 		/********LAYER*********/
 		layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
 
+		menu = new Menu();
 	}
-	
+
 	/******************************FUNCAO RESPONSAVEL PELA LOGICA DO JOGO***********************************/
 	public void tick() {
-		bola.tick();
-		player.tick();		
-		fase.tick();
+		if(gameStatos == "NORMAL") {
+			bola.tick();
+			player.tick();		
+			fase.tick();
+		}
+		else if(gameStatos == "GAME OVER") {
+
+		}
+		else if(gameStatos == "MENU") {			
+			menu.tick();
+
+		}
 	}
 
 	/*****************************FUNCAO RESPONSAVEL PELA RENDERIZACAO DO JOGO**********************************/
@@ -81,17 +98,24 @@ public class Game implements Runnable{
 		player.render(g);
 		fase.render(g);
 
+		if(gameStatos == "GAME OVER") {
+
+		}
+		else if(gameStatos == "MENU") {
+			menu.render(g);
+		}
+
 		g = bs.getDrawGraphics();
 		g.drawImage(layer, 0, 0, VarGlobais.getGameWidth() * VarGlobais.getGameEscala(), VarGlobais.getGameHeight() * VarGlobais.getGameEscala(), null);
 		g.dispose();
 		bs.show();
 	}		
-	
+
 
 	@Override
 	public void run() {	
 		geraCores();
-		
+
 		fase.geraFases("fase1.png");
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
@@ -124,14 +148,17 @@ public class Game implements Runnable{
 
 	public synchronized void start() {
 		if(thread != null) return;
-		thread = new Thread(this);
+		else {
+			thread = new Thread(this);			
+			VarGlobais.setRunning(true);
+		}
 		thread.start();
 		VarGlobais.setRunning(true);
-
 	}
 
 	public synchronized void stop() {
 		if(thread == null) return;
+		VarGlobais.setRunning(false);
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
@@ -141,7 +168,7 @@ public class Game implements Runnable{
 
 
 	}
-	
+
 	public void geraCores() {
 		cores[0] = new Color(106,190, 48,255);
 		cores[1] = new Color(215,123,186,255);
@@ -151,11 +178,11 @@ public class Game implements Runnable{
 		cores[5] = new Color(223,113, 38,255);
 		cores[6] = new Color(172, 50, 50,255);
 		cores[7] = new Color(105,106,106,255);
-		
+
 	}
 
 
-	
+
 
 
 
