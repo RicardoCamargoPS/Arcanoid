@@ -3,12 +3,18 @@ package com.ricardo.main;
 public class VarGlobais {	
 	
 	private static int gameWidth = 220, gameHeight = 300, gameEscala = 2;
-	private static int pxPlayer = gameWidth / 2 - 20, pyPlayer = gameHeight - 15, pxBola = gameWidth / 2, pyBola = gameHeight / 2 + 20;
-	private static int pxGrade = 10, pyGrade = 20;
-	private static boolean isRunning = false;
-    static GameStatus gs;	
-	private static int pxUiMenu = gameWidth / 4, pyUiMenu = gameHeight / 2, pxUiScore = gameWidth - 100, pyUiScore = 10, pxUiSeletor = gameWidth / 2 + 70, pyUiSeletor = gameHeight / 2;
 	
+	private static int pxPlayer = gameWidth / 2 - 20, pyPlayer = gameHeight - 15;
+	
+	private static int pxBola = gameWidth / 2 - 3, pyBola = gameHeight - 23;
+	
+	private static int pxGrade = 10, pyGrade = 20;
+	
+	private static boolean isRunning = false;	
+   	
+	private static int  pxUiScore = gameWidth - 100, pyUiScore = 10;
+	
+	private int vida = 3;
 	
 
 	public static int getPxPlayer() {
@@ -30,14 +36,6 @@ public class VarGlobais {
 	public static int getPyGrade() {
 		return pyGrade;
 	}
-
-	public static int getPxUiMenu() {
-		return pxUiMenu;
-	}
-
-	public static int getPyUiMenu() {
-		return pyUiMenu;
-	}
 	public static int getPxUiScore() {
 		return pxUiScore;
 	}
@@ -45,14 +43,7 @@ public class VarGlobais {
 	public static int getPyUiScore() {
 		return pyUiScore;
 	}
-
-	public static int getPxUiSeletor() {
-		return pxUiSeletor;
-	}
-
-	public static int getPyUiSeletor() {
-		return pyUiSeletor;
-	}
+	
 	public static boolean isRunning() {
 		return isRunning;
 	}
@@ -60,14 +51,14 @@ public class VarGlobais {
 	public static void setRunning(boolean Running) {
 		isRunning = Running;
 	}
-
-//	public static boolean isVisibleMenu() {
-//		return visibleMenu;
-//	}
-//
-//	public static void setVisibleMenu(boolean visible) {
-//		visibleMenu = visible;
-//	}
+	
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
 
 	public static int getGameWidth() {
 		return gameWidth;

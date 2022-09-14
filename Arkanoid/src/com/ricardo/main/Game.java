@@ -2,14 +2,8 @@ package com.ricardo.main;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import com.ricardo.entidades.*;
 import com.ricardo.fases.Gerador_fase;
@@ -22,20 +16,27 @@ public class Game implements Runnable{
 	private Thread thread;		
 	static UIMenu novo, continuar;
 	static UISeletor seletor;	
+	public static UIScore PlayerScore;
 	private BufferedImage layer;
 	public static Bola bola;
 	static Player player;
-
-	private Gerador_fase fase;
-	public static Color[] cores;
-
+	private Gerador_fase fase;		
+	
 	public static String gameStatos = "MENU";
+	public static Menu menu;
 	private boolean showMessageGameOver = true;
 	private int framesGameOver = 0;
 	private boolean restartGame = false;
-
-	public static Menu menu;
-
+	
+	/*
+	 *     foi necessario criar um array de cores para que o gerador de fases funcionace perfeitamente,
+	 *     sendo que para funcionar as novas fases tem que ser criadas com as mesmas cores.
+	 *     na pasta res tem um arquivo de paleta de cores com nome de paleta.png e um arquivo txt com o
+	 *     codigo RGBa das mesma.
+	 * 
+	 */
+	
+	public static Color[] cores; 
 
 	public Game() {
 
@@ -43,12 +44,7 @@ public class Game implements Runnable{
 
 		/**************************NSTANCIA DA JANELA*************************************/
 		janela = new Display("Arkanoid", VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
-
-		/***********************INSTANCIAS DO MENU****************************************/
-		novo = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu(), "Novo Jogo");
-		seletor = new UISeletor(VarGlobais.getPxUiSeletor(), VarGlobais.getPyUiSeletor(), "<" );
-		continuar = new UIMenu(VarGlobais.getPxUiMenu(), VarGlobais.getPyUiMenu() + 23, "Continuar");
-
+		
 
 		/**************************INSTANCIA DO PLAYER*************************************/
 		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());
@@ -63,7 +59,11 @@ public class Game implements Runnable{
 		/********LAYER*********/
 		layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
 
+		/*******MENU*****/
 		menu = new Menu();
+		
+		/************************************PONTUACAO**********************************/
+		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());
 	}
 
 	/******************************FUNCAO RESPONSAVEL PELA LOGICA DO JOGO***********************************/
@@ -162,7 +162,7 @@ public class Game implements Runnable{
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		};
 

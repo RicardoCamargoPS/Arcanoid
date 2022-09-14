@@ -7,15 +7,15 @@ import com.ricardo.main.Game;
 import com.ricardo.main.TesteColisao;
 import com.ricardo.main.VarGlobais;
 
-public class Player extends GameObject {
+public class Player extends GameObject {	
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static boolean  isMoving;
-	private static int dx = 0;
-	private static double vel = 0.4;
+	public boolean  isMoving;
+	private int dx = 0;
+	private double vel = 0.4;
 	private TesteColisao estaColidindo;
 	
 	

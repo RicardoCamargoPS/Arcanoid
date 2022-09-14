@@ -3,7 +3,6 @@ package com.ricardo.ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.util.concurrent.TimeUnit;
 
 
 public class UIScore {

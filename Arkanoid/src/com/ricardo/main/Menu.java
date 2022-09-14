@@ -3,7 +3,6 @@ package com.ricardo.main;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 public class Menu {
 
@@ -12,9 +11,9 @@ public class Menu {
 	public int currentOption = 0;
 	public int maxOption = options.length - 1;
 
-	public static boolean up,down,enter;
+	public boolean up,down,enter;
 
-	public static boolean pause = false;
+	public boolean pause = false;
 
 
 	public void tick() {
@@ -41,10 +40,7 @@ public class Menu {
 		}
 	}
 
-	public void render(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		//g2.setColor(new Color(0,0,0,100));
-		//g2.fillRect(0, 0, Game.WIDTH*Game.SCALE, Game.HEIGHT*Game.SCALE);
+	public void render(Graphics g) {		
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("arial",Font.BOLD,14));		
 		g.drawString(">Arkanoid<", VarGlobais.getGameWidth() / 2 - 47 , VarGlobais.getGameHeight() - 200);

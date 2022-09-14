@@ -19,15 +19,17 @@ import com.ricardo.ui.UIScore;
 public class Gerador_fase {
 
 	public static List<Bloco> blocos;
-	static UIScore PlayerScore;
+	
 	private TesteColisao estaColidindo;
 
 	private int largura, altura;
 
 
 	public Gerador_fase() {		
+		/************************INSTANCIA DO TESTE DE COLISAO****************************/
 		estaColidindo = new TesteColisao();		
-		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());
+	
+		
 
 		/**************************INSTANCIAS DOS BLOCOS**********************************/
 		blocos = new ArrayList<Bloco>();
@@ -47,7 +49,7 @@ public class Gerador_fase {
 	}
 
 	public void render(Graphics g) {		
-		PlayerScore.render(g);			
+		Game.PlayerScore.render(g);			
 		for(int x = 0; x < blocos.size(); x++) {
 			blocos.get(x).render(g);
 
@@ -100,22 +102,9 @@ public class Gerador_fase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//
-		//		int px = VarGlobais.getPxGrade(), py = VarGlobais.getPyGrade();
-		//		for(int x = 1; x <= 9; x++) {
-		//			for(int y = 0; y <= 8; y++ ) {
-		//				Random random = new Random();
-		//				int def = random.nextInt(8) + 1;				
-		//
-		//				blocos.add(new Bloco(px, py, 21, 13, def));
-		//				py += 14;
-		//			}
-		//			px += 22;
-		//			py = VarGlobais.getPyGrade();
-		//		}
 	}	
 	public void score() {		
-		PlayerScore.increaseScore(10);		
+		Game.PlayerScore.increaseScore(10);		
 	}
 
 }

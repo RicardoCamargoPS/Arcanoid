@@ -10,8 +10,8 @@ public class Bola extends GameObject {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static int dx = 1, dy = 1;
-	public double vel = 0.25;
+	public int dx = 1, dy = 1;
+	public double vel = 2;
 	
 
 	public Bola(int px, int py, int width, int height) {
@@ -24,8 +24,8 @@ public class Bola extends GameObject {
 	@Override
 	public void tick() {
 		
-		px += dx * vel * (1000/120);
-		py += dy * vel * (1000/60);
+		px += dx * vel;
+		py += dy * vel;
 		
 		if(ladoDir() > VarGlobais.getGameWidth()) {			
 			dx *= -1;			
