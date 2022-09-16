@@ -13,8 +13,6 @@ import com.ricardo.entidades.Bloco;
 import com.ricardo.main.Game;
 import com.ricardo.main.TesteColisao;
 import com.ricardo.main.VarGlobais;
-import com.ricardo.ui.UIScore;
-
 
 public class Gerador_fase {
 
@@ -48,8 +46,7 @@ public class Gerador_fase {
 		}	
 	}
 
-	public void render(Graphics g) {		
-		Game.PlayerScore.render(g);			
+	public void render(Graphics g) {				
 		for(int x = 0; x < blocos.size(); x++) {
 			blocos.get(x).render(g);
 
@@ -64,7 +61,7 @@ public class Gerador_fase {
 			altura = map.getHeight();
 			int px = VarGlobais.getPxGrade(), py = VarGlobais.getPyGrade();
 			int def = 1;
-			for(int xx = 0; xx < largura; xx++) {
+			for(int xx = 0; xx < largura ; xx++) {
 				for(int yy = 0; yy < altura; yy++) {	
 
 					if(map.getRGB(xx, yy) != 0) {
@@ -88,13 +85,13 @@ public class Gerador_fase {
 							def = 8; 
 						} 
 
-						blocos.add(new Bloco(px,py, 21, 13, def, Game.cores[def - 1]));
-						py += 14;						
+						blocos.add(new Bloco(px,py, 18, 9, def, Game.cores[def - 1]));
+						py += 10;						
 					}else {
-						py += 14;
+						py += 10;
 					}
 				} 
-				px += 22; 
+				px += 19; 
 				py = VarGlobais.getPyGrade(); }
 
 

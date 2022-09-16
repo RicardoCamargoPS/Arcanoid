@@ -33,9 +33,6 @@ public class Bola extends GameObject {
 		else if(ladoEsq() < 0) {
 			dx *= -1;
 		}
-		if(ladoBai() > VarGlobais.getGameHeight()) {
-			dy *= -1;
-		}
 		else if(ladoCim() < 0) {
 			dy *= -1;
 		}

@@ -4,6 +4,7 @@ import com.ricardo.entidades.Bloco;
 import com.ricardo.entidades.Bola;
 import com.ricardo.entidades.GameObject;
 import com.ricardo.entidades.Player;
+import com.ricardo.ui.UIVida;
 
 public class TesteColisao {
 
@@ -52,5 +53,15 @@ public class TesteColisao {
 		}
 
 		bola.dy *= -1;
+	}
+	
+	public void fundoColisao(Bola bola) {	
+
+		if(bola.ladoBai() > VarGlobais.getGameHeight()) {
+			Game.PlayerVida.tiraVidas();
+			Game.PlayerVida.updateVidas();
+			
+		}
+		
 	}
 }

@@ -17,17 +17,19 @@ public class Game implements Runnable{
 	static UIMenu novo, continuar;
 	static UISeletor seletor;	
 	public static UIScore PlayerScore;
+	public static UIVida PlayerVida;
 	private BufferedImage layer;
 	public static Bola bola;
 	static Player player;
 	private Gerador_fase fase;		
-	
+	private TesteColisao colisao;
+
 	public static String gameStatos = "MENU";
 	public static Menu menu;
 	private boolean showMessageGameOver = true;
 	private int framesGameOver = 0;
 	private boolean restartGame = false;
-	
+
 	/*
 	 *     foi necessario criar um array de cores para que o gerador de fases funcionace perfeitamente,
 	 *     sendo que para funcionar as novas fases tem que ser criadas com as mesmas cores.
@@ -35,7 +37,7 @@ public class Game implements Runnable{
 	 *     codigo RGBa das mesma.
 	 * 
 	 */
-	
+
 	public static Color[] cores; 
 
 	public Game() {
@@ -44,7 +46,7 @@ public class Game implements Runnable{
 
 		/**************************NSTANCIA DA JANELA*************************************/
 		janela = new Display("Arkanoid", VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
-		
+
 
 		/**************************INSTANCIA DO PLAYER*************************************/
 		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());
@@ -61,17 +63,25 @@ public class Game implements Runnable{
 
 		/*******MENU*****/
 		menu = new Menu();
-		
+
 		/************************************PONTUACAO**********************************/
 		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());
+
+		/************************************VIDAS*************************************/
+		PlayerVida = new UIVida(VarGlobais.getPxUiVida(), VarGlobais.getPyUiVida());
+
+		colisao = new TesteColisao();
+
 	}
 
 	/******************************FUNCAO RESPONSAVEL PELA LOGICA DO JOGO***********************************/
 	public void tick() {
-		if(gameStatos == "NORMAL") {
-			bola.tick();
+
+		if(gameStatos == "NORMAL") {	
 			player.tick();		
 			fase.tick();
+			bola.tick();
+
 		}
 		else if(gameStatos == "GAME OVER") {
 
@@ -80,6 +90,12 @@ public class Game implements Runnable{
 			menu.tick();
 
 		}
+
+		PlayerVida.tick();
+		colisao.playerColisao(player, bola);
+		colisao.fundoColisao(bola);
+
+
 	}
 
 	/*****************************FUNCAO RESPONSAVEL PELA RENDERIZACAO DO JOGO**********************************/
@@ -97,6 +113,9 @@ public class Game implements Runnable{
 		bola.render(g);
 		player.render(g);
 		fase.render(g);
+
+		PlayerScore.render(g);
+		PlayerVida.render(g);
 
 		if(gameStatos == "GAME OVER") {
 
@@ -116,7 +135,7 @@ public class Game implements Runnable{
 	public void run() {	
 		geraCores();
 
-		fase.geraFases("fase1.png");
+		fase.geraFases("fase11.png");
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
 		double deltaTime = 0;
@@ -162,7 +181,7 @@ public class Game implements Runnable{
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
-			
+
 			e.printStackTrace();
 		};
 

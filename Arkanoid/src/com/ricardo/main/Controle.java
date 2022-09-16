@@ -48,6 +48,9 @@ public class Controle implements KeyListener {
 			Game.player.setDx(-1);
 				 
 		}
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+			
+		}
 		
 	}
 

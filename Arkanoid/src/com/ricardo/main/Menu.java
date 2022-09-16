@@ -14,6 +14,8 @@ public class Menu {
 	public boolean up,down,enter;
 
 	public boolean pause = false;
+	public boolean agardando = false;
+
 
 
 	public void tick() {

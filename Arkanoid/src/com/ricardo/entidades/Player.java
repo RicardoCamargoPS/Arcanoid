@@ -16,7 +16,6 @@ public class Player extends GameObject {
 	public boolean  isMoving;
 	private int dx = 0;
 	private double vel = 0.4;
-	private TesteColisao estaColidindo;
 	
 	
 	public Player(int px, int py) {
@@ -25,9 +24,6 @@ public class Player extends GameObject {
 		this.py = py;
 		this.width = 40;
 		this.height = 12;
-		
-		estaColidindo = new TesteColisao();
-				
 	}
 
 	@Override
@@ -43,7 +39,7 @@ public class Player extends GameObject {
 			px +=  dx * vel * 6;
 		}
 		
-		estaColidindo.playerColisao(this, Game.bola);
+		//estaColidindo.playerColisao(this, Game.bola);
 	}
 
 	@Override
