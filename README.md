@@ -29,6 +29,6 @@ Este projeto ainda não foi compilado, e eu estou atualmente usando o VS Code, f
 ![jogo Arkanoid](https://github.com/RicardoCamargoPS/Arcanoid/blob/master/Arkanoid/src/com/ricardo/resurces/Arkanoid.png)
 
 1. ajustar o tamanho da tela acho que esta muito pequena
-2. melhorar as img de todos os gameObjects do jogo ja que são gerados via codigo estão muito simples - feito parcialmente
+2. melhorar as img de todos os gameObjects do jogo - feito parcialmente
    
 ![jogo Arkanoid](https://github.com/RicardoCamargoPS/Arcanoid/blob/master/Arkanoid/src/com/ricardo/resurces/Arkanoid2.png)
