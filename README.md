@@ -21,6 +21,7 @@ Este projeto ainda não foi compilado, e eu estou atualmente usando o VS Code, f
 1. implementar o sistema de game over
 2. implementar um sistema de salvamento
 3. implementar um sistema de ranking baseado em pontuação
-4. implementar um sistema para os sounds do jogo 
+4. implementar um sistema para os sounds do jogo
+5. implemetar um sistema de progreção de fase
 
 ![jogo Arkanoid](https://github.com/RicardoCamargoPS/Arcanoid/blob/master/Arkanoid/src/com/ricardo/resurces/Arkanoid2.png)
