@@ -111,10 +111,10 @@ public class Game implements Runnable{
 
 		Graphics g = layer.getGraphics();
 
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.fillRect(0, 0, VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
-		//g.setColor(Color.black);
-		g.setColor(new Color(198,198,198));
+		g.setColor(Color.black);
+		//g.setColor(new Color(198,198,198));
 		g.fillRect(2, 2, VarGlobais.getGameWidth() - 4 , VarGlobais.getGameHeight() - 4);
 
 		bola.render(g);
