@@ -135,7 +135,7 @@ public class Game implements Runnable{
 	public void run() {	
 		geraCores();
 
-		fase.geraFases("fase11.png");
+		fase.geraFases("fase1.png");
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
 		double deltaTime = 0;
