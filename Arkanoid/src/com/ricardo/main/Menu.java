@@ -47,7 +47,6 @@ public class Menu {
 		g.setFont(new Font("arial",Font.BOLD,14));		
 		g.drawString(">Arkanoid<", VarGlobais.getGameWidth() / 2 - 47 , VarGlobais.getGameHeight() - 200);
 
-		//Opcoes de menu
 		g.setColor(Color.red);
 		g.setFont(new Font("arial",Font.BOLD,10));
 		if(pause == false)

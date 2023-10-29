@@ -30,54 +30,24 @@ public class Game implements Runnable{
 	private int framesGameOver = 0;
 	private boolean restartGame = false;
 	
-
-	
-
-	/*
-	 *     foi necessario criar um array de cores para que o gerador de fases funcionace perfeitamente,
-	 *     sendo que para funcionar as novas fases tem que ser criadas com as mesmas cores.
-	 *     na pasta res tem um arquivo de paleta de cores com nome de paleta.png e um arquivo txt com o
-	 *     codigo RGBa das mesma.
-	 * 
-	 */
-
 	public static Color[] cores; 
 
 	public Game() {
 
-		cores = new Color[8];
-
-		/**************************NSTANCIA DA JANELA*************************************/
-		janela = new Display("Arkanoid", VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
-
-
-		/**************************INSTANCIA DO PLAYER*************************************/
-		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());
-
-		/**************************INSTANCIA DA BOLA***************************************/
+		cores = new Color[8];		
+		janela = new Display("Arkanoid", VarGlobais.getGameWidth(), VarGlobais.getGameHeight());		
+		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());		
 		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);	
-
-		fase = new Gerador_fase();
-
-		/**************************CRIACAO DE  OUTRAS INSTANCIAS*************************************/
-
-		/********LAYER*********/
-		layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);
-
-		/*******MENU*****/
-		menu = new Menu();
-
-		/************************************PONTUACAO**********************************/
-		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());
-
-		/************************************VIDAS*************************************/
+		fase = new Gerador_fase();		
+		layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);		
+		menu = new Menu();		
+		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());		
 		PlayerVida = new UIVida(VarGlobais.getPxUiVida(), VarGlobais.getPyUiVida());
-
 		colisao = new TesteColisao();
 
 	}
 
-	/******************************FUNCAO RESPONSAVEL PELA LOGICA DO JOGO***********************************/
+	
 	public void tick() {
 
 		if(gameStatos == "NORMAL") {	
@@ -91,17 +61,14 @@ public class Game implements Runnable{
 		}
 		else if(gameStatos == "MENU") {			
 			menu.tick();
-
 		}
 
 		PlayerVida.tick();
 		colisao.playerColisao(player, bola);
 		colisao.fundoColisao(bola);
 
-
 	}
 
-	/*****************************FUNCAO RESPONSAVEL PELA RENDERIZACAO DO JOGO**********************************/
 	public void render() {
 		BufferStrategy bs = janela.getBufferStrategy();
 		if(bs == null) {
@@ -152,13 +119,11 @@ public class Game implements Runnable{
 
 		while (VarGlobais.isRunning()) {
 
-
 			nowTime = System.nanoTime();
 			deltaTime += (nowTime - lastTime) / timePerTick;
 			lastTime = nowTime;
 
 			if(deltaTime >= 1) {
-
 
 				tick();
 				render();	
@@ -196,6 +161,16 @@ public class Game implements Runnable{
 	}
 
 	public void geraCores() {
+
+		
+	/*
+	 *     foi necessario criar um array de cores para que o gerador de fases funcionace perfeitamente,
+	 *     sendo que para funcionar as novas fases tem que ser criadas com as mesmas cores.
+	 *     na pasta res tem um arquivo de paleta de cores com nome de paleta.png e um arquivo txt com o
+	 *     codigo RGBa das mesma.
+	 * 
+	 */
+
 		cores[0] = new Color(106,190, 48,255);
 		cores[1] = new Color(215,123,186,255);
 		cores[2] = new Color(91,110,225,255);
@@ -206,10 +181,4 @@ public class Game implements Runnable{
 		cores[7] = new Color(105,106,106,255);
 
 	}
-
-
-
-
-
-
 }

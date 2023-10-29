@@ -6,9 +6,6 @@ import com.ricardo.main.VarGlobais;
 
 public class Bola extends GameObject {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public int dx = 1, dy = 1;
 	public double vel = 3;

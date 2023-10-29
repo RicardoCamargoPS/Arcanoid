@@ -24,12 +24,8 @@ public class Gerador_fase {
 
 
 	public Gerador_fase() {		
-		/************************INSTANCIA DO TESTE DE COLISAO****************************/
-		estaColidindo = new TesteColisao();		
-	
 		
-
-		/**************************INSTANCIAS DOS BLOCOS**********************************/
+		estaColidindo = new TesteColisao();			
 		blocos = new ArrayList<Bloco>();
 	}
 
@@ -86,17 +82,16 @@ public class Gerador_fase {
 						} 
 
 						blocos.add(new Bloco(px,py, 18, 9, def, Game.cores[def - 1]));
-						//py += 10;						
-					}//else {
-						py += 10;
-					//}
+											
+					}
+					py += 10;					
 				} 
 				px += 19; 
 				py = VarGlobais.getPyGrade(); }
 
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}	
