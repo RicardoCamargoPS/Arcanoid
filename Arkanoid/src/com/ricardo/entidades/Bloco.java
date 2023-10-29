@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Bloco extends GameObject {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private Color cor;
 	public int def;
@@ -33,6 +31,11 @@ public class Bloco extends GameObject {
 	public void render(Graphics g) {
 		g.setColor(cor);
 		g.fillRect(px, py, width, height);
+		int r = cor.getRGB();
+		r -= 022031000;		
+		
+		g.setColor(new Color(r));
+		g.drawRect(px, py, width , height);
 		
 	}
 

@@ -29,6 +29,9 @@ public class Game implements Runnable{
 	private boolean showMessageGameOver = true;
 	private int framesGameOver = 0;
 	private boolean restartGame = false;
+	
+
+	
 
 	/*
 	 *     foi necessario criar um array de cores para que o gerador de fases funcionace perfeitamente,
@@ -108,6 +111,7 @@ public class Game implements Runnable{
 
 		Graphics g = layer.getGraphics();
 		g.setColor(Color.black);
+		//g.setColor(new Color(128,128,128));
 		g.fillRect(0, 0, VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
 
 		bola.render(g);

@@ -2,28 +2,24 @@ package com.ricardo.entidades;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
-import com.ricardo.main.Game;
-import com.ricardo.main.TesteColisao;
 import com.ricardo.main.VarGlobais;
 
-public class Player extends GameObject {	
+public class Player extends GameObject {			
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	public boolean  isMoving;
 	private int dx = 0;
 	private double vel = 0.4;
+	private Color cor = Color.blue;
 	
 	
 	public Player(int px, int py) {
 		
 		this.px = px;
 		this.py = py;
-		this.width = 40;
-		this.height = 12;
+		this.width = 70;
+		this.height = 8;
 	}
 
 	@Override
@@ -38,14 +34,19 @@ public class Player extends GameObject {
 		if(isMoving) {
 			px +=  dx * vel * 6;
 		}
-		
-		//estaColidindo.playerColisao(this, Game.bola);
+				
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.blue);
+		g.setColor(cor);
 		g.fillRect(px, py, width, height);		
+
+		int r = cor.getRGB();
+		r -= 022031000;		
+
+		g.setColor(new Color(r));
+		g.drawRect(px, py, width , height);
 	}
 	
 	public void setWidth(int width) {

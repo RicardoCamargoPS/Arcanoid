@@ -86,10 +86,10 @@ public class Gerador_fase {
 						} 
 
 						blocos.add(new Bloco(px,py, 18, 9, def, Game.cores[def - 1]));
-						py += 10;						
-					}else {
+						//py += 10;						
+					}//else {
 						py += 10;
-					}
+					//}
 				} 
 				px += 19; 
 				py = VarGlobais.getPyGrade(); }

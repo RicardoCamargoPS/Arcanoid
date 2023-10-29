@@ -2,7 +2,7 @@ package com.ricardo.main;
 
 public class VarGlobais {	
 	
-	private static int gameWidth = 230, gameHeight = 300, gameEscala = 2;
+	private static int gameWidth = 230, gameHeight = 300, gameEscala = 3;
 	
 	private static int pxPlayer = gameWidth / 2 - 20, pyPlayer = gameHeight - 15;
 	
