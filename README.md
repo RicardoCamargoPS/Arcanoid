@@ -11,9 +11,9 @@ Este projeto ainda não foi compilado, e eu estou atualmente usando o VS Code, f
 
 ### Melhorias que ainda precisam ser feitas 
 
-1. ajustar o tamnho da tela acho que esta muito pequena
+1. ajustar o tamnho da tela acho que esta muito pequena - feito
 2. melhorar a renderização das fases de forma que fique centralizado
-3. melhorar as img de todos os gameObjects do jogo ja que são gerados via codigo estão muito simples
+3. melhorar as img de todos os gameObjects do jogo ja que são gerados via codigo estão muito simples - feito mas acho que da para melhorar
 4. refatorar todo o codigo para melhor organização e aplicar boas praticas de programação
 
 ### O que ainda pretendo fazer  
@@ -23,4 +23,4 @@ Este projeto ainda não foi compilado, e eu estou atualmente usando o VS Code, f
 3. implementar um sistema de ranking baseado em pontuação
 4. implementar um sistema para os sounds do jogo 
 
-![jogo Arkanoid](https://github.com/RicardoCamargoPS/Arcanoid/blob/master/Arkanoid/src/com/ricardo/resurces/Arkanoid.png)
+![jogo Arkanoid](https://github.com/RicardoCamargoPS/Arcanoid/blob/master/Arkanoid/src/com/ricardo/resurces/Arkanoid2.png)
