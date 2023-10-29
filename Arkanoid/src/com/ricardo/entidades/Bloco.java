@@ -31,12 +31,20 @@ public class Bloco extends GameObject {
 	public void render(Graphics g) {
 		g.setColor(cor);
 		g.fillRect(px, py, width, height);
-		int r = cor.getRGB();
-		r -= 022031000;		
 		
-		g.setColor(new Color(r));
-		g.drawRect(px, py, width , height);
+		int escurer = cor.getRGB();
+		escurer -= 022031000;
+		int clarear = cor.getRGB();
+		clarear += 011021010;
 		
+		g.setColor(new Color(escurer));
+		g.drawRect(px, py, width - 1  , height - 1);
+
+		g.setColor(new Color(clarear));
+		g.fillRect(px + 2, py + 2, width - 4, height - 4);
+		
+		 
+								
 	}
 
 	public int getDef() {
