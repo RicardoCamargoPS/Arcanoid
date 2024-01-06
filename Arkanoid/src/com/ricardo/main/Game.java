@@ -12,10 +12,10 @@ import com.ricardo.windowns.Display;
 
 public class Game implements Runnable{
 
+	private static final int WIDTH = 192, HEIGHT = 300, SCALE = 2;
+
 	private Display janela;
-	private Thread thread;		
-	static UIMenu novo, continuar;
-	static UISeletor seletor;	
+	private Thread thread;	
 	public static UIScore PlayerScore;
 	public static UIVida PlayerVida;
 	private BufferedImage layer;
@@ -26,20 +26,18 @@ public class Game implements Runnable{
 
 	public static String gameStatos = "MENU";
 	public static Menu menu;
-	private boolean showMessageGameOver = true;
-	private int framesGameOver = 0;
-	private boolean restartGame = false;
+	
 	
 	public static Color[] cores; 
 
 	public Game() {
 
 		cores = new Color[8];		
-		janela = new Display("Arkanoid", VarGlobais.getGameWidth(), VarGlobais.getGameHeight());		
+		janela = new Display("Arkanoid", WIDTH, HEIGHT);		
 		player = new Player(VarGlobais.getPxPlayer(), VarGlobais.getPyPlayer());		
 		bola = new Bola(VarGlobais.getPxBola(), VarGlobais.getPyBola(), 7, 7);	
 		fase = new Gerador_fase();		
-		layer = new BufferedImage(VarGlobais.getGameWidth(), VarGlobais.getGameHeight(), BufferedImage.TYPE_INT_RGB);		
+		layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);		
 		menu = new Menu();		
 		PlayerScore = new UIScore(VarGlobais.getPxUiScore(), VarGlobais.getPyUiScore());		
 		PlayerVida = new UIVida(VarGlobais.getPxUiVida(), VarGlobais.getPyUiVida());
@@ -79,10 +77,10 @@ public class Game implements Runnable{
 		Graphics g = layer.getGraphics();
 
 		g.setColor(Color.white);
-		g.fillRect(0, 0, VarGlobais.getGameWidth(), VarGlobais.getGameHeight());
+		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.setColor(Color.black);
 		//g.setColor(new Color(198,198,198));
-		g.fillRect(2, 2, VarGlobais.getGameWidth() - 4 , VarGlobais.getGameHeight() - 4);
+		g.fillRect(2, 2, WIDTH - 4 , HEIGHT - 4);
 
 		bola.render(g);
 		player.render(g);
@@ -99,7 +97,7 @@ public class Game implements Runnable{
 		}
 
 		g = bs.getDrawGraphics();
-		g.drawImage(layer, 0, 0, VarGlobais.getGameWidth() * VarGlobais.getGameEscala(), VarGlobais.getGameHeight() * VarGlobais.getGameEscala(), null);
+		g.drawImage(layer, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
 		g.dispose();
 		bs.show();
 	}		
@@ -156,8 +154,14 @@ public class Game implements Runnable{
 
 			e.printStackTrace();
 		};
+	}
 
+	public static int getWidth(){
+		return WIDTH;
+	}
 
+	public static int 	getHeight(){
+		return HEIGHT;
 	}
 
 	public void geraCores() {

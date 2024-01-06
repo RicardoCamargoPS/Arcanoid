@@ -7,9 +7,6 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 import com.ricardo.main.Controle;
-import com.ricardo.main.VarGlobais;
-
-
 
 public class Display {
 
@@ -21,13 +18,14 @@ public class Display {
 	private Canvas canvas;
 	private JFrame janela;
 	private Controle controle;
+	private final int SCALE = 2;
 	
 	public Display(String title, int width, int height) {
 		
 		canvas = new Canvas();
 		controle = new Controle();
 		
-		canvas.setSize(new Dimension (VarGlobais.getGameWidth() * VarGlobais.getGameEscala(), VarGlobais.getGameHeight() * VarGlobais.getGameEscala()));
+		canvas.setSize(new Dimension (width * SCALE, height *SCALE));
 		
 		janela = new JFrame(title);
 		janela.addKeyListener(controle);
@@ -37,9 +35,6 @@ public class Display {
 		janela.setResizable(false);
 		janela.setLocationRelativeTo(null);
 		janela.setVisible(true);	
-		
-		
-		
 	}
 	
 	public BufferStrategy getBufferStrategy() {
