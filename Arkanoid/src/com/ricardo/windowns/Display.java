@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
-import com.ricardo.main.Controle;
-
 public class Display {
 
 	/**

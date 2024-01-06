@@ -1,7 +1,9 @@
-package com.ricardo.main;
+package com.ricardo.windowns;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import com.ricardo.main.Game;
 
 public class Controle implements KeyListener {
 
@@ -10,7 +12,6 @@ public class Controle implements KeyListener {
 		
 		
 	}
-
 
 	@Override
 	public void keyPressed(KeyEvent e) {

@@ -4,12 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import com.ricardo.main.VarGlobais;
-
 public class UIVida {
 	
 	String text = "Vidas:";
-	public int vida = VarGlobais.getVida();	
+	public int vida = 3;	
 	int px, py;
 	Font font;
 	
@@ -27,7 +25,7 @@ public class UIVida {
 		updateVidas();
 	}
 	public void resetVidas() {
-		VarGlobais.setVida(3);
+		vida = 3;
 	}
 	
 	public void tiraVidas() {

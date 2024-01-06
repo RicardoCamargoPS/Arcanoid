@@ -2,7 +2,8 @@ package com.ricardo.entidades;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import com.ricardo.main.VarGlobais;
+
+import com.ricardo.main.Game;
 
 public class Bola extends GameObject {
 	
@@ -24,7 +25,7 @@ public class Bola extends GameObject {
 		px += dx * vel;
 		py += dy * vel;
 		
-		if(ladoDir() > VarGlobais.getGameWidth()) {			
+		if(ladoDir() > Game.getWidth()) {			
 			dx *= -1;			
 		}
 		else if(ladoEsq() < 0) {

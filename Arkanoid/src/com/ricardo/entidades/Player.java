@@ -2,7 +2,8 @@ package com.ricardo.entidades;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import com.ricardo.main.VarGlobais;
+
+import com.ricardo.main.Game;
 
 public class Player extends GameObject {			
 	
@@ -27,8 +28,8 @@ public class Player extends GameObject {
 		
 		if(ladoEsq() <= 0) {
 			px = 0;
-		} else if (ladoDir() >= VarGlobais.getGameWidth()) {
-			px = VarGlobais.getGameWidth() - width;
+		} else if (ladoDir() >= Game.getWidth()) {
+			px = Game.getWidth() - width;
 		}		
 		
 		if(isMoving) {
