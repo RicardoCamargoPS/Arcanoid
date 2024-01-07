@@ -43,7 +43,6 @@ public class Game implements Runnable{
 		PlayerScore = new UIScore(10, 10);		
 		PlayerVida = new UIVida(100, 10);
 		colisao = new TesteColisao();
-
 	}
 
 	
