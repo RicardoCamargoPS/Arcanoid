@@ -9,14 +9,13 @@ public class Bola extends GameObject {
 	
 	private static final long serialVersionUID = 1L;
 	public int dx = 1, dy = 1;
-	public double vel = 3;
-	
+	public static int vel = 3;
 
-	public Bola(int px, int py, int width, int height) {
-		this.px = px;
-		this.py = py; 
-		this.width = width; 
-		this.height = height;
+	public Bola() {
+		this.px = 93;
+		this.py = 270; 
+		this.width = 7; 
+		this.height = 7;
 	}
 
 	@Override
@@ -33,9 +32,11 @@ public class Bola extends GameObject {
 		}
 		else if(ladoCim() < 0) {
 			dy *= -1;
-		}
-		
-		
+		}	
+	}
+
+	public static int getVel(){
+		return vel;
 	}
 
 	@Override

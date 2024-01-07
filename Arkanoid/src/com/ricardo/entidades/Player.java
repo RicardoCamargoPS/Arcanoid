@@ -15,10 +15,10 @@ public class Player extends GameObject {
 	private Color cor = Color.blue;
 	
 	
-	public Player(int px, int py) {
+	public Player() {
 		
-		this.px = px;
-		this.py = py;
+		this.px = 61;
+		this.py = 280;
 		this.width = 70;
 		this.height = 8;
 	}

@@ -17,27 +17,29 @@ public class Game implements Runnable{
 	private boolean isRunning = false;
 	private BufferedImage layer;
 	private Display janela;
-	private Thread thread;	
-	private Gerador_fase fase;		
+	private Thread thread;				
 	private TesteColisao colisao;
 
+	public static Gerador_fase fase;
 	public static UIScore PlayerScore;
 	public static UIVida PlayerVida;
 	public static String gameStatos = "MENU";	
 	public static Bola bola;
 	public static Player player;
 	public static Menu menu;
+	public static UIGameOver gameOver;
 	
 	
 	
 	public Game() {
 					
 		janela = new Display("Arkanoid", WIDTH, HEIGHT);		
-		player = new Player(61, 280);		
-		bola = new Bola(93,270, 7, 7);	
+		player = new Player();		
+		bola = new Bola();	
 		fase = new Gerador_fase();		
 		layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);		
-		menu = new Menu();		
+		menu = new Menu();	
+		gameOver = new UIGameOver();	
 		PlayerScore = new UIScore(10, 10);		
 		PlayerVida = new UIVida(100, 10);
 		colisao = new TesteColisao();
@@ -53,7 +55,9 @@ public class Game implements Runnable{
 			bola.tick();
 
 		}
+
 		else if(gameStatos == "GAME OVER") {
+			gameOver.tick();
 
 		}
 		else if(gameStatos == "MENU") {			
@@ -89,6 +93,7 @@ public class Game implements Runnable{
 		PlayerVida.render(g);
 
 		if(gameStatos == "GAME OVER") {
+			gameOver.render(g);
 
 		}
 		else if(gameStatos == "MENU") {

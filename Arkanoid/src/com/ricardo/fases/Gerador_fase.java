@@ -27,6 +27,11 @@ public class Gerador_fase {
 	private int largura, altura;
 
 
+	public void setBlocos(){
+
+	}
+
+
 	public Gerador_fase() {		
 
 		cores = new Color[8];	
@@ -61,6 +66,19 @@ public class Gerador_fase {
 			blocos.get(x).render(g);
 
 		}		
+	}
+
+	public void limpaFase(){
+
+		for(int x = 0; x < blocos.size(); x++) {			
+			blocos.remove(x);										
+		}	
+	}
+
+	public void setFase(List<Bloco> b){
+		for(int x = 0; x < b.size(); x++) {
+			blocos.add(b.get(x));
+		}	
 	}
 
 	public void geraFases(String path) {		

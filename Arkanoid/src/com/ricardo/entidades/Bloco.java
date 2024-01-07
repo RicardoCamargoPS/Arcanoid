@@ -17,8 +17,7 @@ public class Bloco extends GameObject {
 		this.width = width;
 		this.height = height;
 		this.def = def;
-		this.cor = cor;
-		
+		this.cor = cor;		
 		
 	}
 

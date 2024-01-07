@@ -8,7 +8,7 @@ import java.awt.Graphics;
 public class UIScore {
 	
 	String text = "Score:";
-	int score = 0;	
+	static int score = 0;	
 	int px, py;
 	Font font;
 	
@@ -27,6 +27,9 @@ public class UIScore {
 	}
 	public void resetScore() {
 		score = 0;
+	}
+	public static int getScore(){
+		return score;
 	}
 	
 

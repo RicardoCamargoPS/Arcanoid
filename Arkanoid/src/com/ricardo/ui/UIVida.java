@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import com.ricardo.main.Game;
+
 public class UIVida {
 	
 	String text = "Vidas:";
@@ -18,10 +20,15 @@ public class UIVida {
 		font = font.deriveFont(12f);
 	}
 	public void updateVidas() {		
-		text = "Vidas: " + vida;		
+		text = "Vidas: " + vida;	
 	}
 	public void somaVidas(int aux) {
-		vida += aux;
+		this.vida += aux;
+		updateVidas();
+	}
+
+	public void setVidas(int vidas) {
+		this.vida = vidas;
 		updateVidas();
 	}
 	public void resetVidas() {
@@ -30,6 +37,9 @@ public class UIVida {
 	
 	public void tiraVidas() {
 		vida--;
+		if (vida == 0) {
+			Game.gameStatos = "GAME OVER";			
+		}
 	}
 	
 
@@ -43,5 +53,8 @@ public class UIVida {
 	public void tick() {
 		updateVidas();
 	}
+    public static int getVida() {
+        return 0;
+    }
 
 }
