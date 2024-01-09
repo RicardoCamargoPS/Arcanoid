@@ -7,6 +7,8 @@ import com.ricardo.fases.Gerador_fase;
 import com.ricardo.main.Game;
 import com.ricardo.ui.UIScore;
 import com.ricardo.ui.UIVida;
+
+import com.google.gson.Gson;
 public class SaveGame {
 
 

@@ -1,0 +1,17 @@
+com\ricardo\entidades\Player.class
+com\ricardo\entidades\Bola.class
+com\ricardo\main\MainGame.class
+com\ricardo\ui\UIGameOver.class
+com\ricardo\fases\Gerador_fase.class
+com\ricardo\ui\Menu.class
+com\ricardo\ui\UIScore.class
+com\ricardo\ui\UIVida.class
+com\ricardo\windowns\Display.class
+com\ricardo\dto\LoadGame.class
+com\ricardo\main\TesteColisao.class
+com\ricardo\entidades\Bloco.class
+com\ricardo\dto\SaveGame.class
+com\ricardo\dto\RestartGame.class
+com\ricardo\windowns\Controle.class
+com\ricardo\main\Game.class
+com\ricardo\entidades\GameObject.class
