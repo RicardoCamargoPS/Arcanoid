@@ -40,17 +40,11 @@ public class Bloco extends GameObject {
 		g.drawRect(px, py, width - 1  , height - 1);
 
 		g.setColor(new Color(clarear));
-		g.fillRect(px + 2, py + 2, width - 4, height - 4);
-		
-		 
-								
+		g.fillRect(px + 2, py + 2, width - 4, height - 4);							
 	}
 
-	public int getDef() {
-		return def;
-	}
-
-	public void setDef(int def) {
-		this.def = def;
+	@Override
+	public String toString() {
+		return super.toString() + cor + def ;
 	}
 }

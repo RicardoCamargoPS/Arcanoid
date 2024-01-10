@@ -70,5 +70,10 @@ public abstract class  GameObject extends Rectangle{
 
 	}
 
+	@Override
+	public String toString() {
+		return "GameObject [px=" + px + ", py=" + py + ", width=" + width + ", height=" + height + "]";
+	}
+
 
 }

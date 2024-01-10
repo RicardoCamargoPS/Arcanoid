@@ -49,14 +49,6 @@ public class Player extends GameObject {
 		g.setColor(new Color(r));
 		g.drawRect(px, py, width , height);
 	}
-	
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public void setDx(int dx) {
-		this.dx = dx;
-	}
 
 	public void setVel(double vel) {
 		this.vel = vel;
@@ -65,5 +57,14 @@ public class Player extends GameObject {
 	public void setMoving(boolean moving) {
 		this.isMoving = moving;
 	}
-	
+
+	@Override
+	public String toString() {
+		return super.toString() + isMoving + dx + vel + cor;
+	}
+
+	public void setDx(int dx) {
+		this.dx = dx;
+	}
+
 }

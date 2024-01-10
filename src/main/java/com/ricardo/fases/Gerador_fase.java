@@ -53,11 +53,11 @@ public class Gerador_fase {
 			blocos.get(x).tick();		
 			estaColidindo.blocoColisao(blocos.get(x), Game.bola);
 		}	
-		for(int x = 0; x < blocos.size(); x++) {
+		for(int x = 0; x < blocos.size(); x++) {	
 			if(blocos.get(x).def == 0) {
 				blocos.remove(x);		
 				score();
-			}							
+			}					
 		}	
 	}
 

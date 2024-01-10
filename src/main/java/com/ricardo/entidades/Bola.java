@@ -35,10 +35,6 @@ public class Bola extends GameObject {
 		}	
 	}
 
-	public static int getVel(){
-		return vel;
-	}
-
 	@Override
 	public void render(Graphics g) {
 
@@ -48,5 +44,12 @@ public class Bola extends GameObject {
 		g.setColor(Color.white);
 		g.fillOval(px+3, py+1, width - 4, height - 4);
 	}
+
+	@Override
+	public String toString() {
+		return super.toString() + dx + dy;
+	}
+
+
 
 }

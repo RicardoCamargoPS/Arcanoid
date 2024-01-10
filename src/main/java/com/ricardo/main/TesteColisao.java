@@ -35,6 +35,7 @@ public class TesteColisao {
 			bola.dy = ballFromTop ? -1 : 1;
 		}
 		bloco.def--;		
+		System.out.println(bloco);
 	}
 
 	public void playerColisao(Player jogador, Bola bola) {
