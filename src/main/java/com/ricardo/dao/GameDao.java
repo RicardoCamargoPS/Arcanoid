@@ -19,8 +19,6 @@ public class GameDao implements Serializable {
 
     private UIVida vidas;
     private UIScore score;
-    private int pontos;
-    private int vida;
     private List <Bloco> blocos;
     private Player player;
     private Bola bola;
@@ -34,9 +32,9 @@ public class GameDao implements Serializable {
         Game.bola.setPy(270);
 
         Game.PlayerScore.resetScore();
-        Game.PlayerScore.increaseScore(pontos);
+        Game.PlayerScore.increaseScore(score.getScore());
 
-        Game.PlayerVida.setVidas(vida);
+        Game.PlayerVida.setVidas(vidas.getVida());
         Game.fase.limpaFase();
         Game.fase.setFase(blocos);
 
@@ -47,8 +45,8 @@ public class GameDao implements Serializable {
         this.player = player;
         this.bola = bola;
 
-        score = score;
-        vidas = vidas;
+        this.score = score;
+        this.vidas = vidas;
 
         for( Bloco b: blocos){
             this.blocos.add(b);
@@ -61,12 +59,14 @@ public class GameDao implements Serializable {
         for( Bloco b: blocos){
             dados.append(b).append("\n");
         }     
+        dados.append(score).append("\n");
+        dados.append(vidas).append("\n");
 
     }
 
     // Método para salvar o jogo
-    private static void saveGame(String playerName, int playerScore, String filePath) {
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(filePath))) {
+    private static void saveGame() {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(""))) {
             GameDao gameData = new GameDao();
             outputStream.writeObject(gameData);
             System.out.println("Jogo salvo com sucesso.");

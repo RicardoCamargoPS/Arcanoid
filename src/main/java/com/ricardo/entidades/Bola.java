@@ -30,7 +30,7 @@ public class Bola extends GameObject {
 		else if(ladoEsq() < 0) {
 			dx *= -1;
 		}
-		else if(ladoCim() < 0) {
+		else if(ladoCim() < 0.5) {
 			dy *= -1;
 		}	
 	}

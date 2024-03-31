@@ -48,9 +48,10 @@ public class TesteColisao {
 
 		//double minOverlapX = ballFromLeft ? overlapLeft : overlapRight;
 
-		if (ballFromLeft) {
-			bola.dx = ballFromLeft ? -1 : 1;
-		}
+	
+		bola.dx = ballFromLeft ? 1 : -1;
+	
+		
 
 		bola.dy *= -1;
 	}
