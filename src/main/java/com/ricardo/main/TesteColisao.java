@@ -12,6 +12,7 @@ public class TesteColisao {
 		return obj1.ladoDir() >= obj2.ladoEsq() && obj1.ladoEsq() <= obj2.ladoDir()
 				&& obj1.ladoBai() >= obj2.ladoCim() && obj1.ladoCim() <= obj2.ladoBai();
 	}
+	
 
 
 	public void blocoColisao(Bloco bloco, Bola bola) {
