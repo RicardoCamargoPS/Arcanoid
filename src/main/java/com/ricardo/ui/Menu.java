@@ -36,7 +36,7 @@ public class Menu {
 		if(enter) {
 			enter = false;
 			if(options[currentOption] == "novo jogo" || options[currentOption] == "continuar") {
-				Game.gameStatos = "NORMAL";
+				Game.menuStatos = "NORMAL";
 				pause = false;
 			}else if(options[currentOption] == "sair") {
 				System.exit(1);

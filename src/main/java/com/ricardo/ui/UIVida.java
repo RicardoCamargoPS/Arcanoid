@@ -38,7 +38,7 @@ public class UIVida {
 	public void tiraVidas() {
 		vida--;
 		if (vida == 0) {
-			Game.gameStatos = "GAME OVER";			
+			Game.menuStatos = "GAME OVER";			
 		}
 	}
 	

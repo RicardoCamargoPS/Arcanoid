@@ -17,24 +17,24 @@ public class Controle implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {			
-			if(Game.gameStatos == "MENU") {
+			if(Game.menuStatos == "MENU") {
 				Game.menu.enter = true;
 			}
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {			
-			Game.gameStatos = "MENU";
+			Game.menuStatos = "MENU";
 			Game.menu.pause = true;
 		}		
 
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			if(Game.gameStatos == "MENU") {
+			if(Game.menuStatos == "MENU") {
 				Game.menu.up = true;
 			}
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-			if(Game.gameStatos == "MENU") {
+			if(Game.menuStatos == "MENU") {
 				Game.menu.down = true;
 			}
 		}

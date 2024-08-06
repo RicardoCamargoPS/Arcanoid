@@ -6,9 +6,11 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import com.ricardo.entidades.*;
-import com.ricardo.fases.Gerador_fase;
+import com.ricardo.fases.Construtor_fase;
 import com.ricardo.ui.*;
 import com.ricardo.windowns.Display;
+
+import utils.GameStutusEnum;
 
 public class Game implements Runnable{
 
@@ -20,10 +22,11 @@ public class Game implements Runnable{
 	private Thread thread;				
 	private TesteColisao colisao;
 
-	public static Gerador_fase fase;
+	public static Construtor_fase fase;
 	public static UIScore PlayerScore;
 	public static UIVida PlayerVida;
-	public static String gameStatos = "MENU";	
+	//public GameStutusEnum gameStatos;
+	public static String menuStatos;
 	public static Bola bola;
 	public static Player player;
 	public static Menu menu;
@@ -36,7 +39,7 @@ public class Game implements Runnable{
 		janela = new Display("Arkanoid", WIDTH, HEIGHT);		
 		player = new Player();		
 		bola = new Bola();	
-		fase = new Gerador_fase();		
+		fase = new Construtor_fase();		
 		layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);		
 		menu = new Menu();	
 		gameOver = new UIGameOver();	
@@ -48,20 +51,21 @@ public class Game implements Runnable{
 	
 	public void tick() {
 
-		if(gameStatos == "NORMAL") {	
+		if( menuStatos.equals(GameStutusEnum.Running.name())) {	
 			player.tick();		
 			fase.tick();
 			bola.tick();
 
 		}
 
-		else if(gameStatos == "GAME OVER") {
+		else if(menuStatos.equals(GameStutusEnum.GameOver.name())) {
 			gameOver.tick();
 
 		}
-		else if(gameStatos == "MENU") {			
+		else if(menuStatos.equals(GameStutusEnum.Menu.name())) {			
 			menu.tick();
 		}
+		else if(menuStatos.equals(GameStutusEnum.Paused.name())){}
 
 		PlayerVida.tick();
 		colisao.playerColisao(player, bola);
@@ -91,11 +95,11 @@ public class Game implements Runnable{
 		PlayerScore.render(g);
 		PlayerVida.render(g);
 
-		if(gameStatos == "GAME OVER") {
+		if(gameStatos.GameOver  != null) {
 			gameOver.render(g);
 
 		}
-		else if(gameStatos == "MENU") {
+		else if(gameStatos.Menu  != null) {
 			menu.render(g);
 		}
 
@@ -109,7 +113,7 @@ public class Game implements Runnable{
 	@Override
 	public void run() {	
 
-		fase.geraFases("fase1.png");
+		fase.geraFases("fase11.png");
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
 		double deltaTime = 0;

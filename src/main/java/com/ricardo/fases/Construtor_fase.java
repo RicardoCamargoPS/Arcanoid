@@ -14,7 +14,7 @@ import com.ricardo.entidades.Bloco;
 import com.ricardo.main.Game;
 import com.ricardo.main.TesteColisao;
 
-public class Gerador_fase {
+public class Construtor_fase {
 
 	private final int POS_X_INIT = 11, POS_Y_INIT = 20;
 	public static Color[] cores; 
@@ -32,17 +32,16 @@ public class Gerador_fase {
 	}
 
 
-	public Gerador_fase() {		
+	public Construtor_fase() {		
 
-		cores = new Color[8];	
-		cores[0] = new Color(106,190, 48,255);
-		cores[1] = new Color(215,123,186,255);
-		cores[2] = new Color(91,110,225,255);
-		cores[3] = new Color(251,242, 54,255);
-		cores[4] = new Color(118, 66,138,255);
-		cores[5] = new Color(223,113, 38,255);
-		cores[6] = new Color(172, 50, 50,255);
-		cores[7] = new Color(105,106,106,255);
+		cores = new Color[7];	
+		cores[0] = new Color(106,190, 48,255); // Verde
+		cores[1] = new Color(215,123,186,255); // Rosa
+		cores[2] = new Color(91,110,225,255); // Azul
+		cores[3] = new Color(118, 66,138,255); // Roxo
+		cores[4] = new Color(223,113, 38,255); // Laranja
+		cores[5] = new Color(172, 50, 50,255); // Vermelho
+		cores[6] = new Color(105,106,106,255); // Cinza
 		
 		estaColidindo = new TesteColisao();			
 		blocos = new ArrayList<Bloco>();

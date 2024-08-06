@@ -32,9 +32,9 @@ public class Bloco extends GameObject {
 		g.fillRect(px, py, width, height);
 		
 		int escurer = cor.getRGB();
-		escurer -= 022031000;
+		escurer -= 010020000;
 		int clarear = cor.getRGB();
-		clarear += 011021010;
+		clarear += 010020000;
 		
 		g.setColor(new Color(escurer));
 		g.drawRect(px, py, width - 1  , height - 1);
