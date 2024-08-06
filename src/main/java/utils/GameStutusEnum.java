@@ -2,6 +2,10 @@ package utils;
 
 public enum GameStutusEnum {
 
-    Menu, Running, GameOver, Paused;
+    Menu("Menu"), Running("Running"), GameOver("GameOver");
+
+    GameStutusEnum(String statos) {
+        //TODO Auto-generated constructor stub
+    }
 
 }

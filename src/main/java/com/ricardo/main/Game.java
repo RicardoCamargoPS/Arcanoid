@@ -26,7 +26,7 @@ public class Game implements Runnable{
 	public static UIScore PlayerScore;
 	public static UIVida PlayerVida;
 	//public GameStutusEnum gameStatos;
-	public static String menuStatos;
+	public static String menuStatos = "Menu";
 	public static Bola bola;
 	public static Player player;
 	public static Menu menu;
@@ -65,8 +65,7 @@ public class Game implements Runnable{
 		else if(menuStatos.equals(GameStutusEnum.Menu.name())) {			
 			menu.tick();
 		}
-		else if(menuStatos.equals(GameStutusEnum.Paused.name())){}
-
+		
 		PlayerVida.tick();
 		colisao.playerColisao(player, bola);
 		colisao.fundoColisao(bola);
@@ -95,11 +94,11 @@ public class Game implements Runnable{
 		PlayerScore.render(g);
 		PlayerVida.render(g);
 
-		if(gameStatos.GameOver  != null) {
+		if(menuStatos.equals(GameStutusEnum.GameOver.name())) {
 			gameOver.render(g);
 
 		}
-		else if(gameStatos.Menu  != null) {
+		else if(menuStatos.equals(GameStutusEnum.Menu.name())) {
 			menu.render(g);
 		}
 
