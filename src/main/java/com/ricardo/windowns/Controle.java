@@ -23,8 +23,7 @@ public class Controle implements KeyListener {
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {			
-			Game.menuStatos = "Menu";
-			Game.menu.pause = true;
+			Game.menuStatos = "Paused";
 		}		
 
 		if(e.getKeyCode() == KeyEvent.VK_UP) {

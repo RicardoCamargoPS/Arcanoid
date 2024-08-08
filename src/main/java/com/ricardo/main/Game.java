@@ -8,9 +8,8 @@ import java.awt.image.BufferedImage;
 import com.ricardo.entidades.*;
 import com.ricardo.fases.Construtor_fase;
 import com.ricardo.ui.*;
+import com.ricardo.utils.GameStutusEnum;
 import com.ricardo.windowns.Display;
-
-import utils.GameStutusEnum;
 
 public class Game implements Runnable{
 
@@ -57,13 +56,10 @@ public class Game implements Runnable{
 			bola.tick();
 
 		}
-
-		else if(menuStatos.equals(GameStutusEnum.GameOver.name())) {
-			gameOver.tick();
-
-		}
-		else if(menuStatos.equals(GameStutusEnum.Menu.name())) {			
-			menu.tick();
+		else if(menuStatos.equals(GameStutusEnum.Menu.name()) ||
+			   menuStatos.equals(GameStutusEnum.Paused.name()) ||
+			   menuStatos.equals(GameStutusEnum.GameOver.name())) {
+				menu.tick();
 		}
 		
 		PlayerVida.tick();
@@ -94,13 +90,12 @@ public class Game implements Runnable{
 		PlayerScore.render(g);
 		PlayerVida.render(g);
 
-		if(menuStatos.equals(GameStutusEnum.GameOver.name())) {
-			gameOver.render(g);
-
+		if(menuStatos.equals(GameStutusEnum.Menu.name()) ||
+			   menuStatos.equals(GameStutusEnum.Paused.name()) ||
+			   menuStatos.equals(GameStutusEnum.GameOver.name())) {
+				menu.render(g);
 		}
-		else if(menuStatos.equals(GameStutusEnum.Menu.name())) {
-			menu.render(g);
-		}
+		
 
 		g = bs.getDrawGraphics();
 		g.drawImage(layer, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);

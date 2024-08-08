@@ -8,10 +8,12 @@ import com.ricardo.main.Game;
 
 public class Menu {
 
-	public String[] options = {"novo jogo","carregar jogo","sair"};
+	public String[] menuMainOptions = {"Novo jogo","Carregar jogo","Sair"};
+	public String[] menuPausedOpitions = {"Continuar", "Salvar", "Sair"};
+	public String[] menuGameOverOpitions = {"Novo jogo", "Sair"};
 
 	public int currentOption = 0;
-	public int maxOption = options.length - 1;
+	public int maxOption = 0;
 
 	public boolean up,down,enter;
 
@@ -21,6 +23,14 @@ public class Menu {
 
 
 	public void tick() {
+		if (Game.menuStatos == "Menu"){
+			maxOption = menuMainOptions.length - 1;
+		} else if(Game.menuStatos == "Paused"){
+			maxOption = menuPausedOpitions.length - 1;
+		} else if(Game.menuStatos == "GameOver"){
+			maxOption = menuGameOverOpitions.length - 1;
+		}
+
 		if(up) {
 			up = false;
 			currentOption--;
@@ -35,10 +45,12 @@ public class Menu {
 		}
 		if(enter) {
 			enter = false;
-			if(options[currentOption] == "novo jogo" || options[currentOption] == "continuar") {
+			if(menuMainOptions[currentOption] == "Novo jogo" || menuPausedOpitions[currentOption] == "Continuar") {
 				Game.menuStatos = "Running";
 				pause = false;
-			}else if(options[currentOption] == "sair") {
+			} else if(menuMainOptions[currentOption] == "Carregar jogo"){
+
+			} else if(menuMainOptions[currentOption] == "Sair") {
 				System.exit(1);
 			}
 		}
@@ -46,26 +58,51 @@ public class Menu {
 
 	public void render(Graphics g) {		
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("arial",Font.BOLD,14));		
-		g.drawString(" Arkanoid ", Game.getWidth () / 2 - 47 , Game.getHeight() - 200);
+		g.setFont(new Font("arial",Font.PLAIN,22));		
+		g.drawString(" Arkanoid ", Game.getWidth () / 2 - 47 , Game.getHeight() - 150);
 
-		g.setColor(Color.red);
-		g.setFont(new Font("arial",Font.BOLD,10));
-		if(pause == false)
-			g.drawString("Novo jogo",  Game.getWidth () / 2 - 30, 160);
-		else
-			g.drawString("Resumir",  Game.getWidth () / 2 - 25, 160);
+		g.setFont(new Font("arial",Font.PLAIN,14));
 
-		g.drawString("Carregar jogo",  Game.getWidth () / 2 - 40, 180);
-		g.drawString("Sair",  Game.getWidth () / 2 - 15, 200);
+		if (Game.menuStatos == "Menu"){
+			g.drawString("Novo jogo",  Game.getWidth () / 3, 170);
+			g.drawString("Carregar jogo",  Game.getWidth () / 3, 190);
+			g.drawString("Sair",  Game.getWidth () / 3, 210);
 
-		if(options[currentOption] == "novo jogo") {
-			g.drawString(">",  Game.getWidth () / 2 - 50, 160);
-		}else if(options[currentOption] == "carregar jogo") {
-			g.drawString(">",  Game.getWidth () / 2 - 60, 180);
-		}else if(options[currentOption] == "sair") {
-			g.drawString(">",  Game.getWidth () / 2 - 35, 200);
-		}
+			g.setColor(Color.RED);
+			if(menuMainOptions[currentOption] == "Novo jogo") {
+				g.drawString(">",  Game.getWidth () / 4, 170);
+			}else if(menuMainOptions[currentOption] == "Carregar jogo") {
+				g.drawString(">",  Game.getWidth () / 4, 190);
+			}else if(menuMainOptions[currentOption] == "Sair") {
+				g.drawString(">",  Game.getWidth () / 4, 210);
+			}
+
+		} else if(Game.menuStatos == "Paused"){
+			g.drawString("Continuar",  Game.getWidth () / 3, 170);
+			g.drawString("Salvar",  Game.getWidth () / 3, 190);
+			g.drawString("Sair",  Game.getWidth () / 3, 210);
+
+			g.setColor(Color.RED);
+			if(menuPausedOpitions[currentOption] == "Continuar") {
+				g.drawString(">",  Game.getWidth () / 4, 170);
+			}else if(menuPausedOpitions[currentOption] == "Salvar") {
+				g.drawString(">",  Game.getWidth () / 4, 190);
+			}else if(menuPausedOpitions[currentOption] == "Sair") {
+				g.drawString(">",  Game.getWidth () / 4, 210);
+			}
+
+
+		} else if(Game.menuStatos == "GameOver"){
+			g.drawString("Novo jogo",  Game.getWidth () / 2 - 40, 180);
+			g.drawString("Sair",  Game.getWidth () / 2 - 15, 200);
+
+			if(menuMainOptions[currentOption] == "Novo jogo") {
+				g.drawString(">",  Game.getWidth () / 2 - 50, 160);
+			}else if(menuMainOptions[currentOption] == "Sair") {
+				g.drawString(">",  Game.getWidth () / 2 - 35, 200);
+			}
+
+		}				
 	}
 
 }
