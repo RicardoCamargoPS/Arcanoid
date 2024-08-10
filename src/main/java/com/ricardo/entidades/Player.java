@@ -19,8 +19,8 @@ public class Player extends GameObject {
 		
 		this.px = 61;
 		this.py = 280;
-		this.width = 70;
-		this.height = 8;
+		this.width = 60;
+		this.height = 7;
 	}
 
 	@Override

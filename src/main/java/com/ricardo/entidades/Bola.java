@@ -12,8 +12,8 @@ public class Bola extends GameObject {
 	public static int vel = 3;
 
 	public Bola() {
-		this.px = 93;
-		this.py = 270; 
+		this.px = 90;
+		this.py = 272; 
 		this.width = 7; 
 		this.height = 7;
 	}

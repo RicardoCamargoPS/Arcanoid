@@ -45,6 +45,7 @@ public class TesteColisao {
 
 		double overlapLeft = bola.ladoDir() - jogador.ladoEsq();
 		double overlapRight = jogador.ladoDir() - bola.ladoEsq();
+		double overlapTop = bola.ladoBai() - jogador.ladoCim();
 		boolean ballFromLeft = overlapLeft < overlapRight;
 
 		//double minOverlapX = ballFromLeft ? overlapLeft : overlapRight;

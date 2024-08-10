@@ -17,7 +17,7 @@ public class Controle implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {			
-			if(Game.menuStatos == "Menu") {
+			if(Game.menuStatos == "Menu" || Game.menuStatos == "Paused") {
 				Game.menu.enter = true;
 			}
 		}
@@ -27,13 +27,13 @@ public class Controle implements KeyListener {
 		}		
 
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			if(Game.menuStatos == "Menu") {
+			if(Game.menuStatos == "Menu" || Game.menuStatos == "Paused") {
 				Game.menu.up = true;
 			}
 		}
 
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-			if(Game.menuStatos == "Menu") {
+			if(Game.menuStatos == "Menu" || Game.menuStatos == "Paused") {
 				Game.menu.down = true;
 			}
 		}

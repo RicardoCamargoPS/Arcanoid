@@ -25,9 +25,11 @@ public class Menu {
 	public void tick() {
 		if (Game.menuStatos == "Menu"){
 			maxOption = menuMainOptions.length - 1;
-		} else if(Game.menuStatos == "Paused"){
+		} 
+		if(Game.menuStatos == "Paused"){
 			maxOption = menuPausedOpitions.length - 1;
-		} else if(Game.menuStatos == "GameOver"){
+		} 
+		if(Game.menuStatos == "GameOver"){
 			maxOption = menuGameOverOpitions.length - 1;
 		}
 

@@ -13,7 +13,7 @@ import com.ricardo.windowns.Display;
 
 public class Game implements Runnable{
 
-	private static final int WIDTH = 192, HEIGHT = 300, SCALE = 2;
+	private static final int WIDTH = 192, HEIGHT = 300, SCALE = 3;
 		
 	private boolean isRunning = false;
 	private BufferedImage layer;
@@ -107,7 +107,7 @@ public class Game implements Runnable{
 	@Override
 	public void run() {	
 
-		fase.geraFases("fase11.png");
+		fase.geraFases("fase1.png");
 		int fps = 60;
 		double timePerTick = 1000000000 / fps;
 		double deltaTime = 0;
