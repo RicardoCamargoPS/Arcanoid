@@ -36,7 +36,7 @@ public class TesteColisao {
 			bola.dy = ballFromTop ? -1 : 1;
 		}
 		bloco.def--;		
-		System.out.println(bloco);
+		//System.out.println(bloco);
 	}
 
 	public void playerColisao(Player jogador, Bola bola) {
@@ -45,16 +45,13 @@ public class TesteColisao {
 
 		double overlapLeft = bola.ladoDir() - jogador.ladoEsq();
 		double overlapRight = jogador.ladoDir() - bola.ladoEsq();
-		double overlapTop = bola.ladoBai() - jogador.ladoCim();
 		boolean ballFromLeft = overlapLeft < overlapRight;
+		//System.out.println(ballFromLeft);
 
-		//double minOverlapX = ballFromLeft ? overlapLeft : overlapRight;
-
-	
-		bola.dx = ballFromLeft ? 1 : -1;
-	
+		if (ballFromLeft) {
+			bola.dx *= ballFromLeft ? -1 : 1;
+		}
 		
-
 		bola.dy *= -1;
 	}
 	

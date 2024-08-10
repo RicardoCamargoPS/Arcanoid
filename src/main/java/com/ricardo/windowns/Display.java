@@ -16,7 +16,7 @@ public class Display {
 	private Canvas canvas;
 	private JFrame janela;
 	private Controle controle;
-	private final int SCALE = 3;
+	private final int SCALE = 2;
 	
 	public Display(String title, int width, int height) {
 		

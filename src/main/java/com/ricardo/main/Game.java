@@ -13,7 +13,7 @@ import com.ricardo.windowns.Display;
 
 public class Game implements Runnable{
 
-	private static final int WIDTH = 192, HEIGHT = 300, SCALE = 3;
+	private static final int WIDTH = 192, HEIGHT = 300, SCALE = 2;
 		
 	private boolean isRunning = false;
 	private BufferedImage layer;
