@@ -13,7 +13,7 @@ import com.ricardo.windowns.Display;
 
 public class Game implements Runnable{
 
-	private static final int WIDTH = 192, HEIGHT = 300, SCALE = 2;
+	private static final int WIDTH = 192, HEIGHT = 305, SCALE = 2;
 		
 	private boolean isRunning = false;
 	private BufferedImage layer;
@@ -81,7 +81,7 @@ public class Game implements Runnable{
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.setColor(Color.black);
 		//g.setColor(new Color(198,198,198));
-		g.fillRect(2, 2, WIDTH - 4 , HEIGHT - 4);
+		g.fillRect(5, 15, WIDTH - 10 , HEIGHT - 16);
 
 		bola.render(g);
 		player.render(g);

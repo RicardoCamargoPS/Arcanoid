@@ -18,9 +18,9 @@ public class Player extends GameObject {
 	public Player() {
 		
 		this.px = 61;
-		this.py = 280;
+		this.py = 295;
 		this.width = 60;
-		this.height = 7;
+		this.height = 6;
 	}
 
 	@Override

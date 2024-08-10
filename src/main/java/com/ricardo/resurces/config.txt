@@ -1,0 +1,37 @@
+{
+    "gameWhidt: 192,
+    "gameHeight: 305,
+    "gameScale": 2
+}
+{
+    "playerPX": 61,
+    "playerPY": 290,
+    "playerWhidt": 60,
+    "playerheight": 6,
+    "playerDX: 0,
+    "playerVel": 0.4
+}
+{
+    "ballPX": 88,
+    "ballPY": 271,
+    "ballWhidt": 7,
+    "ballHeight": 7,
+    "ballDX": 1,
+    "ballDY": 1,
+    "ballVel": 3
+}
+{
+    "blocoPX": 11, 
+    "blocoPY": 20,
+    "blocoWidth" 18,
+    "blocoHeight" 9,
+    "blocoDef": 1,
+    "blocoCorVerde": 106190048255,
+    "blocoCorAzul": 091110225255,
+    "blocoCorRosa": 215123186255,
+    "blocoCorLaranja": 223113038255,
+    "blocoCorVermelho": 172050050255,
+    "blocoCorRoxo": 118066138255,
+    "blocoCorCinza": 105106106255
+
+}

@@ -7,11 +7,6 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 public class Display {
-
-	/**
-	 * 
-	 */
-	//private static final long serialVersionUID = 1L;
 	
 	private Canvas canvas;
 	private JFrame janela;

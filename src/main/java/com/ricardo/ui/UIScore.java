@@ -15,7 +15,7 @@ public class UIScore {
 	public UIScore(int px, int py) {
 		this.py = py;
 		this.px = px;
-		font = new Font("Courier New", Font.PLAIN, 12);		
+		font = new Font("arial", Font.PLAIN, 16);		
 		font = font.deriveFont(12f);
 	}
 	void updateScor() {		
@@ -34,7 +34,7 @@ public class UIScore {
 	
 
 	public void render(Graphics g) {				
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		g.setFont(font);		
 		g.drawString(text, px,	py);		
 
