@@ -6,16 +6,27 @@ import java.awt.Graphics;
 import com.ricardo.main.Game;
 
 public class Bola extends GameObject {
-	
-	private static final long serialVersionUID = 1L;
-	public int dx = 1, dy = 1;
-	public static int vel = 3;
+
+	private int dx, dy;
+	private int vel;
+
 
 	public Bola() {
+		initBola();		
+	}	
+
+	public void initBola(){
+		
 		this.px = 88;
 		this.py = 281; 
 		this.width = 7; 
 		this.height = 7;
+		dx = 1;
+		dy = 1;
+		vel = 3;
+	}
+	public void resetBola(){
+		initBola();
 	}
 
 	@Override

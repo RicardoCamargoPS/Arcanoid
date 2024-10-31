@@ -55,7 +55,18 @@ public class Menu {
 			} else if(menuMainOptions[currentOption] == "Sair") {
 				System.exit(1);
 			}
+			else if(menuPausedOpitions[currentOption] == "Salvar"){
+
+			} else if(menuMainOptions[currentOption] == "Sair") {
+				
+			}
+			else if(menuGameOverOpitions[currentOption] == "Novo jogo"){
+
+			} else if(menuGameOverOpitions[currentOption] == "Sair") {
+			
+			}
 		}
+		
 	}
 
 	public void render(Graphics g) {		

@@ -29,7 +29,6 @@ public class Game implements Runnable{
 	public static Bola bola;
 	public static Player player;
 	public static Menu menu;
-	public static UIGameOver gameOver;
 	
 	
 	
@@ -41,7 +40,6 @@ public class Game implements Runnable{
 		fase = new Construtor_fase();		
 		layer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);		
 		menu = new Menu();	
-		gameOver = new UIGameOver();	
 		PlayerScore = new UIScore(10, 10);		
 		PlayerVida = new UIVida(100, 10);
 		colisao = new TesteColisao();

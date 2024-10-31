@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 public abstract class  GameObject extends Rectangle{
 
 	private static final long serialVersionUID = 1L;
-	public int px, py, width, height;
+	protected int px, py, width, height;
 
 	abstract public void tick();
 
@@ -72,7 +72,7 @@ public abstract class  GameObject extends Rectangle{
 
 	@Override
 	public String toString() {
-		return "GameObject [px=" + px + ", py=" + py + ", width=" + width + ", height=" + height + "]";
+		return "px=" + px + ", py=" + py + ", width=" + width + ", height=" + height;
 	}
 
 

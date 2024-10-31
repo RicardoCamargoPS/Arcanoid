@@ -2,25 +2,31 @@ package com.ricardo.entidades;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
 import com.ricardo.main.Game;
 
 public class Player extends GameObject {			
 	
-	
-	private static final long serialVersionUID = 1L;
 	public boolean  isMoving;
-	private int dx = 0;
-	private double vel = 0.4;
+	private int dx;
+	private double vel;
 	private Color cor = Color.blue;
 	
 	
 	public Player() {
+		initPlayer();		
+	}
+
+	public void initPlayer(){
 		
 		this.px = 61;
 		this.py = 295;
 		this.width = 60;
 		this.height = 6;
+		dx = 0;
+		vel = 0.4;
+	}
+	public void resetPlayer(){
+		initPlayer();
 	}
 
 	@Override
@@ -60,7 +66,7 @@ public class Player extends GameObject {
 
 	@Override
 	public String toString() {
-		return super.toString() + isMoving + dx + vel + cor;
+		return super.toString() + vel;
 	}
 
 	public void setDx(int dx) {
